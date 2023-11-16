@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.Operation.Operator;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
