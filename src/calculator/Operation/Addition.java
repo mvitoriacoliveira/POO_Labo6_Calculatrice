@@ -1,5 +1,7 @@
 package calculator.Operation;
 
+import calculator.Operator;
+
 public class Addition extends Operator {
     private String symbol;
     public Addition(){

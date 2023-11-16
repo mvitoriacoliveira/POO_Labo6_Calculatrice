@@ -1,6 +1,8 @@
 package calculator.Operation;
 
-public class Inverse extends Operator{
+import calculator.Operator;
+
+public class Inverse extends Operator {
     private String symbol;
     public Inverse(){
         symbol = "1/x";

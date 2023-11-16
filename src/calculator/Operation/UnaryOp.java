@@ -2,11 +2,10 @@ package calculator.Operation;
 
 import calculator.Operator;
 
-public class Divide extends Operator {
-
+public class UnaryOp extends Operator {
     private String symbol;
-    public Divide(){
-        symbol = "/";
+    public UnaryOp(){
+        symbol = "+/-";
     }
 
     @Override

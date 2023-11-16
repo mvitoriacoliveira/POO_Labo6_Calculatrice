@@ -1,6 +1,8 @@
 package calculator.Operation;
 
-public class SquareRoot extends Operator{
+import calculator.Operator;
+
+public class SquareRoot extends Operator {
     private String symbol;
     public SquareRoot(){
         symbol = "Sqrt";

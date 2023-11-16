@@ -1,7 +1,5 @@
 package calculator;
 
-import calculator.Operation.Operator;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -41,8 +39,8 @@ public class JCalculator extends JFrame
 
   // Ajout d'un bouton dans l'interface et de l'operation associee,
   // instance de la classe Operation, possedeant une methode execute()
-  private void addOperatorButton(String name, int x, int y, Color color, 
-				 final Operator operator)
+  private void addOperatorButton(String name, int x, int y, Color color,
+                                 final Operator operator)
   {
     JButton b = new JButton(name);
     b.setForeground(color);
@@ -50,12 +48,12 @@ public class JCalculator extends JFrame
     constraints.gridy = y;
     getContentPane().add(b, constraints);
     b.addActionListener((e) -> {
-	operator.execute();
-	update();
-      });
+      operator.execute();
+      update();
+    });
   }
 
-  public JCalculator() 
+  public JCalculator()
   {
     super("JCalculator");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,9 +89,9 @@ public class JCalculator extends JFrame
     addOperatorButton("C",  4, 1, Color.RED, null);
 
     // Boutons 1-9
-    for (int i = 1; i < 10; i++) 
-      addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3, 
-			Color.BLUE, null);
+    for (int i = 1; i < 10; i++)
+      addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
+              Color.BLUE, null);
     // Bouton 0
     addOperatorButton("0", 0, 5, Color.BLUE, null);
 
