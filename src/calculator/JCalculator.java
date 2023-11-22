@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.Operation.*;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -29,6 +31,14 @@ public class JCalculator extends JFrame
   // Contraintes pour le placement des composants graphiques
   private final GridBagConstraints constraints = new GridBagConstraints();
 
+  Addition add = new Addition();
+  Substraction sub = new Substraction();
+  Multiplication mult = new Multiplication();
+  Divide div = new Divide();
+  Inverse inv = new Inverse();
+  Squared squ = new Squared();
+  SquareRoot sqrt = new SquareRoot();
+  UnaryOp unop = new UnaryOp();
 
   // Mise a jour de l'interface apres une operation (jList et jStack)
   private void update()
@@ -96,21 +106,21 @@ public class JCalculator extends JFrame
     addOperatorButton("0", 0, 5, Color.BLUE, null);
 
     // Changement de signe de la valeur courante
-    addOperatorButton("+/-", 1, 5, Color.BLUE, null);
+    addOperatorButton("+/-", 1, 5, Color.BLUE, unop);
 
     // Operateur point (chiffres apres la virgule ensuite)
     addOperatorButton(".", 2, 5, Color.BLUE, null);
 
     // Operateurs arithmetiques a deux operandes: /, *, -, +
-    addOperatorButton("/", 3, 2, Color.RED, null);
-    addOperatorButton("*", 3, 3, Color.RED, null);
-    addOperatorButton("-", 3, 4, Color.RED, null);
-    addOperatorButton("+", 3, 5, Color.RED, null);
+    addOperatorButton("/", 3, 2, Color.RED, div);
+    addOperatorButton("*", 3, 3, Color.RED, mult);
+    addOperatorButton("-", 3, 4, Color.RED, sub);
+    addOperatorButton("+", 3, 5, Color.RED, add);
 
     // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
-    addOperatorButton("1/x", 4, 2, Color.RED, null);
-    addOperatorButton("x^2", 4, 3, Color.RED, null);
-    addOperatorButton("Sqrt", 4, 4, Color.RED, null);
+    addOperatorButton("1/x", 4, 2, Color.RED, inv);
+    addOperatorButton("x^2", 4, 3, Color.RED, squ);
+    addOperatorButton("Sqrt", 4, 4, Color.RED, sqrt);
 
     // Entree: met la valeur courante sur le sommet de la pile
     addOperatorButton("Ent", 4, 5, Color.RED, null);
