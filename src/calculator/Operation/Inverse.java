@@ -1,16 +1,21 @@
 package calculator.Operation;
 
-public class Inverse extends Operator {
+public class Inverse<T extends Number> extends Operator<T>  {
     private String symbol;
     public Inverse(){
         symbol = "1/x";
     }
 
 
-    public double execute(double op1) {
-        return 1 / op1;
+    @Override
+    public T execute(T op1) {
+        double op1d = convertDouble(op1);
+        double result = 1/ op1d;
+
+        return (T) Double.valueOf(result);
     }
-    public double execute(double op1, double op2) {
+
+    public T execute(T op1, T op2) {
         throw new UnsupportedOperationException("Inverse operation does not support two operands");
     }
 }
