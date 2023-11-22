@@ -1,6 +1,8 @@
 package calculator.Operation;
 
 public abstract class Operator<T> {
+
+  public Operator operator;
   public static <T extends Number> double convertDouble(T value) {
     return value.doubleValue();
   }
