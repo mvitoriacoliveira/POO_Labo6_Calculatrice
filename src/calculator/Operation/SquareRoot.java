@@ -1,15 +1,15 @@
 package calculator.Operation;
 
-import calculator.Operator;
-
 public class SquareRoot extends Operator {
     private String symbol;
     public SquareRoot(){
         symbol = "Sqrt";
     }
 
-    @Override
-    public void execute() {
-
+    public double execute(double op1) {
+        return Math.sqrt(op1);
+    }
+    public double execute(double op1, double op2) {
+        throw new UnsupportedOperationException("SquareRoot operation does not support two operands");
     }
 }

@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.Operation.Operator;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -48,7 +50,6 @@ public class JCalculator extends JFrame
     constraints.gridy = y;
     getContentPane().add(b, constraints);
     b.addActionListener((e) -> {
-      operator.execute();
       update();
     });
   }
