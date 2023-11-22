@@ -3,8 +3,8 @@
 
 ## TODO 1
 ### Classe générique Stack
-- empiler un objet sur le sommet de la pile ;
-- désempiler un objet du sommet de la pile ;
+- empiler un objet sur le sommet de la pile ; OK
+- désempiler un objet du sommet de la pile ; OK
 - obtenir la représentation sous la forme de chaîne de caractères du contenu de la pile ;
 - obtenir un tableau d’objets représentant l’état actuel de la pile (l’indice 0 contenant l’élément placé au sommet de la pile) ;
 - obtenir un itérateur sur la pile offrant les opérations T next() et boolean hasNext().
@@ -19,3 +19,7 @@
 ## TODO 3 (5. Extension)
 ### Définir une classe Calculator (calculatrice en mode console)
 
+
+# Questions:
+- pas possible de lire jusqu'à la fin utilisant iterator?
+- exception handling in iterator correct?
