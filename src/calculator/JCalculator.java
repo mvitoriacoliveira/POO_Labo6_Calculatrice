@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 //import java.awt.event.*;
 
-public class JCalculator extends JFrame
+public class JCalculator<T extends Number> extends JFrame
 {
   // Tableau representant une pile vide
   private static final String[] empty = { "< empty stack >" };
@@ -31,14 +31,15 @@ public class JCalculator extends JFrame
   // Contraintes pour le placement des composants graphiques
   private final GridBagConstraints constraints = new GridBagConstraints();
 
-  Addition add = new Addition();
+  /*Addition add = new Addition();
   Substraction sub = new Substraction();
   Multiplication mult = new Multiplication();
   Divide div = new Divide();
   Inverse inv = new Inverse();
   Squared squ = new Squared();
   SquareRoot sqrt = new SquareRoot();
-  UnaryOp unop = new UnaryOp();
+  UnaryOp unop = new UnaryOp();*/
+
 
   // Mise a jour de l'interface apres une operation (jList et jStack)
   private void update()
@@ -59,6 +60,13 @@ public class JCalculator extends JFrame
     getContentPane().add(b, constraints);
     b.addActionListener((e) -> {
       operator.execute();
+      /*if (operator != null) {
+        operator.execute();
+      } else {*/
+        // Si ce n'est pas un opérateur, c'est un chiffre
+        T result = ((NumericKeypad<T>) operator).execute();
+        jNumber.setText(result.toString());
+      //}
       update();
     });
   }
@@ -99,14 +107,18 @@ public class JCalculator extends JFrame
     addOperatorButton("C",  4, 1, Color.RED, null);
 
     // Boutons 1-9
-    for (int i = 1; i < 10; i++)
+    for (int i = 1; i < 10; i++){
+      int finalI = i; // Nécessaire pour rendre la variable finale dans la lambda
+      NumericKeypad<T> numericKeypad = new NumericKeypad<>(finalI);
       addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
-              Color.BLUE, null);
+              Color.BLUE, numericKeypad);
+    }
     // Bouton 0
-    addOperatorButton("0", 0, 5, Color.BLUE, null);
+    NumericKeypad<T> numericKeypadZero = new NumericKeypad<>(0);
+    addOperatorButton("0", 0, 5, Color.BLUE, numericKeypadZero);
 
     // Changement de signe de la valeur courante
-    addOperatorButton("+/-", 1, 5, Color.BLUE, unop);
+   /* addOperatorButton("+/-", 1, 5, Color.BLUE, unop);
 
     // Operateur point (chiffres apres la virgule ensuite)
     addOperatorButton(".", 2, 5, Color.BLUE, null);
@@ -120,7 +132,7 @@ public class JCalculator extends JFrame
     // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
     addOperatorButton("1/x", 4, 2, Color.RED, inv);
     addOperatorButton("x^2", 4, 3, Color.RED, squ);
-    addOperatorButton("Sqrt", 4, 4, Color.RED, sqrt);
+    addOperatorButton("Sqrt", 4, 4, Color.RED, sqrt);*/
 
     // Entree: met la valeur courante sur le sommet de la pile
     addOperatorButton("Ent", 4, 5, Color.RED, null);

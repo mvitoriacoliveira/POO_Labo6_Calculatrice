@@ -6,8 +6,8 @@ import java.util.ArrayList; // for Stack::get.Tab() test
 public class Main
 {
   public static void main(String ... args) {
-    //new JCalculator();
-
+    new JCalculator();
+/*
     System.out.println("\n---------START TEST STACK, NODE, ITERATOR IMPLEMENTATION---------");
 
     Stack<Integer> stack = new Stack<>();
@@ -35,7 +35,7 @@ public class Main
 
 
 
-    System.out.println("\n--------- END---------");
+    System.out.println("\n--------- END---------");*/
 
   }
 }

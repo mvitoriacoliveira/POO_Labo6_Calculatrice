@@ -1,18 +1,18 @@
 package calculator.Operation;
 
 public class SquareRoot<T extends Number> extends Operator<T> {
-    private String symbol;
-    public SquareRoot(){
-        symbol = "Sqrt";
+    private final T operand1;
+
+    public SquareRoot(T op1){
+        operand1 = op1;
+    }
+    public T execute() {
+        if (operand1.doubleValue() > 0) {
+            return (T) Double.valueOf(Math.sqrt(operand1.doubleValue()));
+        } else {
+            throw new ArithmeticException("Cannot take the square root of a negative number.");
+        }
     }
 
-    public T execute(T op1) {
-        double op1d = convertDouble(op1);
-        double result = Math.sqrt(op1d);
 
-        return (T) Double.valueOf(result);
-    }
-    public T execute(T op1, T op2)  {
-        throw new UnsupportedOperationException("SquareRoot operation does not support two operands");
-    }
 }
