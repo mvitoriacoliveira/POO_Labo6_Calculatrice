@@ -31,6 +31,8 @@ public class JCalculator<T extends Number> extends JFrame
   // Contraintes pour le placement des composants graphiques
   private final GridBagConstraints constraints = new GridBagConstraints();
 
+  private String currentInput = "0";
+
   /*Addition add = new Addition();
   Substraction sub = new Substraction();
   Multiplication mult = new Multiplication();
@@ -60,13 +62,13 @@ public class JCalculator<T extends Number> extends JFrame
     getContentPane().add(b, constraints);
     b.addActionListener((e) -> {
       operator.execute();
-      /*if (operator != null) {
-        operator.execute();
-      } else {*/
-        // Si ce n'est pas un opérateur, c'est un chiffre
-        T result = ((NumericKeypad<T>) operator).execute();
-        jNumber.setText(result.toString());
-      //}
+      T result = ((NumericKeypad<T>) operator).execute();
+      if (currentInput.equals("0")) {
+        currentInput = result.toString();
+      } else {
+        currentInput += result.toString();
+      }
+      jNumber.setText(currentInput);
       update();
     });
   }
