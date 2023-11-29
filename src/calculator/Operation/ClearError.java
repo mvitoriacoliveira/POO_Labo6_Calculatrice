@@ -9,7 +9,7 @@ public class ClearError <T extends Number> extends Operator<T>{
 
     @Override
     public T execute() {
-        operand1 = (T) (Double) 0.0;
-        return operand1;
+        operand1 = 0.0;
+        return (T) Double.valueOf(operand1);
     }
 }

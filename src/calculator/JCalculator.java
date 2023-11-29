@@ -33,14 +33,28 @@ public class JCalculator<T extends Number> extends JFrame
 
   private String currentInput = "0";
 
+  private State currentState = new State();
+
   // Mise a jour de l'interface apres une operation (jList et jStack)
   private void update()
   {
     // Modifier une zone de texte, JTextField.setText(string nom)
     // Modifier un composant liste, JList.setListData(Object[] tableau)
-    String[] stackData = { currentInput };
-    jStack.setListData(stackData);
+
+      String result = currentState.getCurrentInput();
+      if (currentInput.equals("0")) {
+          currentInput = result;
+      } else {
+          currentInput += result;
+      }
+      jNumber.setText(currentInput);
+
+      //String[] stackData = { currentInput };
   }
+
+    private void updateCurrentState(String input) {
+        currentState.setCurrentInput(input);
+    }
 
   // Ajout d'un bouton dans l'interface et de l'operation associee,
   // instance de la classe Operation, possedeant une methode execute()
@@ -53,15 +67,13 @@ public class JCalculator<T extends Number> extends JFrame
     constraints.gridy = y;
     getContentPane().add(b, constraints);
     b.addActionListener((e) -> {
-      operator.execute();
-      T result = ((NumericKeypad<T>) operator).execute();
-      if (currentInput.equals("0")) {
-        currentInput = result.toString();
-      } else {
-        currentInput += result.toString();
-      }
-      jNumber.setText(currentInput);
-      update();
+        if (operator instanceof NumericKeypad) {
+            NumericKeypad<T> numericKeypad = (NumericKeypad<T>) operator;
+            updateCurrentState(String.valueOf(numericKeypad.getOperand()));
+        } else {
+            operator.execute();
+        }
+        update();
     });
   }
 
@@ -95,7 +107,7 @@ public class JCalculator<T extends Number> extends JFrame
     addOperatorButton("<=", 2, 1, Color.RED, null);
 
     // Mise a zero de la valeur courante + suppression des erreurs
-    ClearError<T> clearError = new ClearError<>(0.0);
+    ClearError<T> clearError = new ClearError<>(Double.parseDouble(currentInput));
     addOperatorButton("CE", 3, 1, Color.RED, clearError);
 
     // Comme CE + vide la pile
