@@ -6,6 +6,13 @@ public class State {
 
     private String memory;
 
+    public State(String input){
+        this.currentInput = input;
+    }
+
+    public State(){
+        this("");
+    }
     public Stack<Double> getStack(){
         return this.stack;
     }
