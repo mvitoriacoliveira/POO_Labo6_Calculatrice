@@ -56,7 +56,7 @@ public class Stack<T> {
         return ret.append("]").toString();
     }
 
-    public ArrayList<T> currentState(){
+    public Object[] currentState(){
         ArrayList<T> tab = new ArrayList<>();
         Iterator<T> it = new Iterator<>(this.top);
 
@@ -64,7 +64,7 @@ public class Stack<T> {
             tab.add(it.next());
         }
 
-        return tab;
+        return tab.toArray();
     }
 
     public Iterator<T> iterator(){
