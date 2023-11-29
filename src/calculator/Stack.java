@@ -44,11 +44,14 @@ public class Stack<T> {
     public String toString(){
         StringBuilder ret = new StringBuilder("[");
         Iterator<T> it = new Iterator<>(this.top);
-
+        int i = 0;
         while (it.hasNext()){
-            ret.append(it.next()).append(", ");
+            if(i > 0){
+                ret.append(", ");
+            }
+            ++i;
+            ret.append(it.next());
         }
-        ret.append(it.next());
 
         return ret.append("]").toString();
     }
