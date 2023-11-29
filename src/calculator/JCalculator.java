@@ -33,21 +33,13 @@ public class JCalculator<T extends Number> extends JFrame
 
   private String currentInput = "0";
 
-  /*Addition add = new Addition();
-  Substraction sub = new Substraction();
-  Multiplication mult = new Multiplication();
-  Divide div = new Divide();
-  Inverse inv = new Inverse();
-  Squared squ = new Squared();
-  SquareRoot sqrt = new SquareRoot();
-  UnaryOp unop = new UnaryOp();*/
-
-
   // Mise a jour de l'interface apres une operation (jList et jStack)
   private void update()
   {
     // Modifier une zone de texte, JTextField.setText(string nom)
     // Modifier un composant liste, JList.setListData(Object[] tableau)
+    String[] stackData = { currentInput };
+    jStack.setListData(stackData);
   }
 
   // Ajout d'un bouton dans l'interface et de l'operation associee,
@@ -103,14 +95,15 @@ public class JCalculator<T extends Number> extends JFrame
     addOperatorButton("<=", 2, 1, Color.RED, null);
 
     // Mise a zero de la valeur courante + suppression des erreurs
-    addOperatorButton("CE", 3, 1, Color.RED, null);
+    ClearError<T> clearError = new ClearError<>(0.0);
+    addOperatorButton("CE", 3, 1, Color.RED, clearError);
 
     // Comme CE + vide la pile
     addOperatorButton("C",  4, 1, Color.RED, null);
 
     // Boutons 1-9
     for (int i = 1; i < 10; i++){
-      int finalI = i; // Nécessaire pour rendre la variable finale dans la lambda
+      int finalI = i;
       NumericKeypad<T> numericKeypad = new NumericKeypad<>(finalI);
       addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
               Color.BLUE, numericKeypad);
@@ -119,8 +112,16 @@ public class JCalculator<T extends Number> extends JFrame
     NumericKeypad<T> numericKeypadZero = new NumericKeypad<>(0);
     addOperatorButton("0", 0, 5, Color.BLUE, numericKeypadZero);
 
-    // Changement de signe de la valeur courante
-   /* addOperatorButton("+/-", 1, 5, Color.BLUE, unop);
+    /*Addition add = new Addition();
+  Substraction sub = new Substraction();
+  Multiplication mult = new Multiplication();
+  Divide div = new Divide();
+  Inverse inv = new Inverse();
+  Squared squ = new Squared();
+  SquareRoot sqrt = new SquareRoot();
+  UnaryOp unop = new UnaryOp();*/
+    /*// Changement de signe de la valeur courante
+    addOperatorButton("+/-", 1, 5, Color.BLUE, unop);
 
     // Operateur point (chiffres apres la virgule ensuite)
     addOperatorButton(".", 2, 5, Color.BLUE, null);
