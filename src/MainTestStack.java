@@ -10,7 +10,7 @@ public class MainTestStack {
     System.out.println("\n---------START TEST STACK, NODE, ITERATOR IMPLEMENTATION---------");
 
     Stack<Integer> stack = new Stack<>();
-    ArrayList<Integer> tab = stack.currentState();
+    Object[] tab = stack.currentState();
     System.out.println("Stack content: " + stack);
 
     stack.push(1);
