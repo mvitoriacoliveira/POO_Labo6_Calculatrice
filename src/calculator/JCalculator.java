@@ -71,7 +71,8 @@ public class JCalculator<T extends Number> extends JFrame
             NumericKeypad<T> numericKeypad = (NumericKeypad<T>) operator;
             updateCurrentState(String.valueOf(numericKeypad.getOperand()));
         } else {
-            operator.execute();
+          updateCurrentState(String.valueOf(operator.execute()));
+          //operator.execute();
         }
         update();
     });
