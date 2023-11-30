@@ -1,3 +1,4 @@
+/*
 package calculator.Operation;
 
 public class SquareRoot<T extends Number> extends Operator<T> {
@@ -16,3 +17,4 @@ public class SquareRoot<T extends Number> extends Operator<T> {
 
 
 }
+*/

@@ -1,15 +1,15 @@
 package calculator.Operation;
 
-public class ClearError <T extends Number> extends Operator<T>{
-    private double operand1;
+import calculator.State;
 
-    public ClearError(double op1) {
-        operand1 = op1;
+public class ClearError extends Operator {
+
+    public ClearError(State state) {
+        super(state);
     }
 
     @Override
-    public T execute() {
-        operand1 = 0;
-        return (T) Double.valueOf(operand1);
+    public void execute() {
+        state.setCurrentInput("0");
     }
 }

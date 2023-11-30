@@ -2,11 +2,15 @@ package calculator.Operation;
 
 import calculator.State;
 
-public abstract class Operator<T> {
+public abstract class Operator {
 
   public Operator operator;
 
-  //public State state = new State();
+  public State state;
 
-  public abstract T execute();
+  public Operator(State s){
+    state = s;
+  }
+
+  public abstract void execute();
 }

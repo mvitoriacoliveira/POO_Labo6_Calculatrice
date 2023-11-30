@@ -1,3 +1,4 @@
+/*
 package calculator.Operation;
 
 public class Squared<T extends Number> extends Operator<T> {
@@ -11,3 +12,4 @@ public class Squared<T extends Number> extends Operator<T> {
         return (T) Double.valueOf(Math.pow(operand1.doubleValue(),2));
     }
 }
+*/

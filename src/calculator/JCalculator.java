@@ -17,113 +17,112 @@ import javax.swing.JTextField;
 
 //import java.awt.event.*;
 
-public class JCalculator<T extends Number> extends JFrame
-{
-  // Tableau representant une pile vide
-  private static final String[] empty = { "< empty stack >" };
+public class JCalculator extends JFrame {
+    // Tableau representant une pile vide
+    private static final String[] empty = {"< empty stack >"};
 
-  // Zone de texte contenant la valeur introduite ou resultat courant
-  private final JTextField jNumber = new JTextField("0");
+    // Zone de texte contenant la valeur introduite ou resultat courant
+    private final JTextField jNumber = new JTextField("0");
 
-  // Composant liste representant le contenu de la pile
-  private final JList<String> jStack = new JList<>(empty);
+    // Composant liste representant le contenu de la pile
+    private final JList<String> jStack = new JList<>(empty);
 
-  // Contraintes pour le placement des composants graphiques
-  private final GridBagConstraints constraints = new GridBagConstraints();
+    // Contraintes pour le placement des composants graphiques
+    private final GridBagConstraints constraints = new GridBagConstraints();
 
-  private String currentInput = "0";
+    //private String currentInput = "0";
 
-  private State currentState = new State();
+    private State currentState = new State();
 
-  // Mise a jour de l'interface apres une operation (jList et jStack)
-  private void update()
-  {
-    // Modifier une zone de texte, JTextField.setText(string nom)
-    // Modifier un composant liste, JList.setListData(Object[] tableau)
+    // Mise a jour de l'interface apres une operation (jList et jStack)
+    private void update() {
+        // Modifier une zone de texte, JTextField.setText(string nom)
+        // Modifier un composant liste, JList.setListData(Object[] tableau)
 
-      String result = currentState.getCurrentInput();
+      /*String result = currentState.getCurrentInput();
       if (currentInput.equals("0")) {
           currentInput = result;
       } else {
           currentInput += result;
-      }
-      jNumber.setText(currentInput);
+      }*/
 
-      //String[] stackData = { currentInput };
-  }
+        jNumber.setText(currentState.getCurrentInput());
+
+        //String[] stackData = { currentInput };
+    }
 
     private void updateCurrentState(String input) {
         currentState.setCurrentInput(input);
     }
 
-  // Ajout d'un bouton dans l'interface et de l'operation associee,
-  // instance de la classe Operation, possedeant une methode execute()
-  private void addOperatorButton(String name, int x, int y, Color color,
-                                 final Operator operator)
-  {
-    JButton b = new JButton(name);
-    b.setForeground(color);
-    constraints.gridx = x;
-    constraints.gridy = y;
-    getContentPane().add(b, constraints);
-    b.addActionListener((e) -> {
-        if (operator instanceof NumericKeypad) {
-            NumericKeypad<T> numericKeypad = (NumericKeypad<T>) operator;
-            updateCurrentState(String.valueOf(numericKeypad.getOperand()));
-        } else {
-          updateCurrentState(String.valueOf(operator.execute()));
-          //operator.execute();
-        }
-        update();
-    });
-  }
+    // Ajout d'un bouton dans l'interface et de l'operation associee,
+    // instance de la classe Operation, possedeant une methode execute()
+    private void addOperatorButton(String name, int x, int y, Color color,
+                                   final Operator operator) {
+        JButton b = new JButton(name);
+        b.setForeground(color);
+        constraints.gridx = x;
+        constraints.gridy = y;
+        getContentPane().add(b, constraints);
+        b.addActionListener((e) -> {
+            if (operator instanceof NumericKeypad) {
+                NumericKeypad numericKeypad = (NumericKeypad) operator;
+                operator.execute();
+                updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
+            } else if (operator != null)  {
+                operator.execute();
+                updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
+            }
+            update();
 
-  public JCalculator()
-  {
-    super("JCalculator");
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    getContentPane().setLayout(new GridBagLayout());
-
-    // Contraintes des composants graphiques
-    constraints.insets = new Insets(3, 3, 3, 3);
-    constraints.fill = GridBagConstraints.HORIZONTAL;
-
-    // Nombre courant
-    jNumber.setEditable(false);
-    jNumber.setBackground(Color.WHITE);
-    jNumber.setHorizontalAlignment(JTextField.RIGHT);
-    constraints.gridx = 0;
-    constraints.gridy = 0;
-    constraints.gridwidth = 5;
-    getContentPane().add(jNumber, constraints);
-    constraints.gridwidth = 1; // reset width
-
-    // Rappel de la valeur en memoire
-    addOperatorButton("MR", 0, 1, Color.RED, null);
-
-    // Stockage d'une valeur en memoire
-    addOperatorButton("MS", 1, 1, Color.RED, null);
-
-    // Backspace
-    addOperatorButton("<=", 2, 1, Color.RED, null);
-
-    // Mise a zero de la valeur courante + suppression des erreurs
-    ClearError<T> clearError = new ClearError<>(Double.parseDouble(currentInput));
-    addOperatorButton("CE", 3, 1, Color.RED, clearError);
-
-    // Comme CE + vide la pile
-    addOperatorButton("C",  4, 1, Color.RED, null);
-
-    // Boutons 1-9
-    for (int i = 1; i < 10; i++){
-      int finalI = i;
-      NumericKeypad<T> numericKeypad = new NumericKeypad<>(finalI);
-      addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
-              Color.BLUE, numericKeypad);
+        });
     }
-    // Bouton 0
-    NumericKeypad<T> numericKeypadZero = new NumericKeypad<>(0);
-    addOperatorButton("0", 0, 5, Color.BLUE, numericKeypadZero);
+
+    public JCalculator() {
+        super("JCalculator");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new GridBagLayout());
+
+        // Contraintes des composants graphiques
+        constraints.insets = new Insets(3, 3, 3, 3);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+
+        // Nombre courant
+        jNumber.setEditable(false);
+        jNumber.setBackground(Color.WHITE);
+        jNumber.setHorizontalAlignment(JTextField.RIGHT);
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.gridwidth = 5;
+        getContentPane().add(jNumber, constraints);
+        constraints.gridwidth = 1; // reset width
+
+        // Rappel de la valeur en memoire
+        addOperatorButton("MR", 0, 1, Color.RED, null);
+
+        // Stockage d'une valeur en memoire
+        addOperatorButton("MS", 1, 1, Color.RED, null);
+
+        // Backspace
+        Backspace backspace = new Backspace(currentState);
+        addOperatorButton("<=", 2, 1, Color.RED, backspace);
+
+        // Mise a zero de la valeur courante + suppression des erreurs
+        ClearError clearError = new ClearError(currentState);
+        addOperatorButton("CE", 3, 1, Color.RED, clearError);
+
+        // Comme CE + vide la pile
+        addOperatorButton("C", 4, 1, Color.RED, null);
+
+        // Boutons 1-9
+        for (int i = 1; i < 10; i++) {
+            NumericKeypad numericKeypad = new NumericKeypad(i, currentState);
+            addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
+                    Color.BLUE, numericKeypad);
+        }
+        // Bouton 0
+        NumericKeypad numericKeypadZero = new NumericKeypad(0, currentState);
+        addOperatorButton("0", 0, 5, Color.BLUE, numericKeypadZero);
 
     /*Addition add = new Addition();
   Substraction sub = new Substraction();
@@ -150,28 +149,28 @@ public class JCalculator<T extends Number> extends JFrame
     addOperatorButton("x^2", 4, 3, Color.RED, squ);
     addOperatorButton("Sqrt", 4, 4, Color.RED, sqrt);*/
 
-    // Entree: met la valeur courante sur le sommet de la pile
-    addOperatorButton("Ent", 4, 5, Color.RED, null);
+        // Entree: met la valeur courante sur le sommet de la pile
+        addOperatorButton("Ent", 4, 5, Color.RED, null);
 
-    // Affichage de la pile
-    JLabel jLabel = new JLabel("Stack");
-    jLabel.setFont(new Font("Dialog", 0, 12));
-    jLabel.setHorizontalAlignment(JLabel.CENTER);
-    constraints.gridx = 5;
-    constraints.gridy = 0;
-    getContentPane().add(jLabel, constraints);
+        // Affichage de la pile
+        JLabel jLabel = new JLabel("Stack");
+        jLabel.setFont(new Font("Dialog", 0, 12));
+        jLabel.setHorizontalAlignment(JLabel.CENTER);
+        constraints.gridx = 5;
+        constraints.gridy = 0;
+        getContentPane().add(jLabel, constraints);
 
-    jStack.setFont(new Font("Dialog", 0, 12));
-    jStack.setVisibleRowCount(8);
-    JScrollPane scrollPane = new JScrollPane(jStack);
-    constraints.gridx = 5;
-    constraints.gridy = 1;
-    constraints.gridheight = 5;
-    getContentPane().add(scrollPane, constraints);
-    constraints.gridheight = 1; // reset height
+        jStack.setFont(new Font("Dialog", 0, 12));
+        jStack.setVisibleRowCount(8);
+        JScrollPane scrollPane = new JScrollPane(jStack);
+        constraints.gridx = 5;
+        constraints.gridy = 1;
+        constraints.gridheight = 5;
+        getContentPane().add(scrollPane, constraints);
+        constraints.gridheight = 1; // reset height
 
-    setResizable(false);
-    pack();
-    setVisible(true);
-  }
+        setResizable(false);
+        pack();
+        setVisible(true);
+    }
 }

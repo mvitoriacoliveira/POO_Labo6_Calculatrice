@@ -1,20 +1,22 @@
 package calculator.Operation;
 
-public class NumericKeypad<T extends Number> extends Operator<T> {
-    private final int operand1;
-    public int getOperand() {
-        return operand1;
-    }
+import calculator.State;
 
-    public NumericKeypad(int op1) {
-        operand1 = op1;
+public class NumericKeypad extends Operator {
+    private final int operand;
+
+    public NumericKeypad(int operand, State state) {
+        super(state);
+        this.operand = operand;
     }
 
     @Override
-    public T execute() {
-        int value = operand1;
-        int result = Math.abs(value) % 10;
-        return (T) Integer.valueOf(result);
+    public void execute() {
+        String currentInput = state.getCurrentInput();
 
+        String newInput = currentInput + operand;
+
+        state.setCurrentInput(newInput);
     }
+
 }

@@ -1,3 +1,4 @@
+/*
 package calculator.Operation;
 
 public class Inverse<T extends Number> extends Operator<T>  {
@@ -15,3 +16,4 @@ public class Inverse<T extends Number> extends Operator<T>  {
         }
     }
 }
+*/

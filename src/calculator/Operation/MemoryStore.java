@@ -1,3 +1,4 @@
+/*
 package calculator.Operation;
 
 public class MemoryStore <T extends Number> extends Operator<T>{
@@ -6,3 +7,4 @@ public class MemoryStore <T extends Number> extends Operator<T>{
         return null;
     }
 }
+*/

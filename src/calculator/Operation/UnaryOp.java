@@ -1,3 +1,4 @@
+/*
 package calculator.Operation;
 
 public class UnaryOp<T extends Number> extends Operator<T> {
@@ -11,3 +12,4 @@ public class UnaryOp<T extends Number> extends Operator<T> {
         return (T) Double.valueOf(-operand1.doubleValue());
     }
 }
+*/

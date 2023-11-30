@@ -1,3 +1,4 @@
+/*
 package calculator.Operation;
 
 public class Divide<T extends Number> extends Operator<T>{
@@ -19,3 +20,4 @@ public class Divide<T extends Number> extends Operator<T>{
     }
 
 }
+*/

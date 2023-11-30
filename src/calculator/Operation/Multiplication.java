@@ -1,3 +1,4 @@
+/*
 package calculator.Operation;
 
 public class Multiplication<T extends Number> extends Operator<T> {
@@ -14,3 +15,4 @@ public class Multiplication<T extends Number> extends Operator<T> {
         return (T) Double.valueOf(operand1.doubleValue() * operand2.doubleValue());
     }
 }
+*/
