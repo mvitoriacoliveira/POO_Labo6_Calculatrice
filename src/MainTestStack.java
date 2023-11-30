@@ -1,3 +1,4 @@
+/*
 import calculator.JCalculator;
 import calculator.*; //import Stack, Node, Examinator
 
@@ -36,3 +37,4 @@ public class MainTestStack {
 
     }
 }
+*/
