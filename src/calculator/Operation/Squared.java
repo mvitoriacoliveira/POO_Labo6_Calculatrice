@@ -1,15 +1,19 @@
-/*
 package calculator.Operation;
 
-public class Squared<T extends Number> extends Operator<T> {
-    private final T operand1;
+import calculator.State;
+import calculator.Formatter;
 
-    public Squared(T op1){
-        operand1 = op1;
+public class Squared extends Operator{
+
+    public Squared(State s){
+        super(s);
     }
     @Override
-    public T execute() {
-        return (T) Double.valueOf(Math.pow(operand1.doubleValue(),2));
+    public void execute() {
+        double input = Double.parseDouble(state.getCurrentInput());
+        double result = Math.pow(input, 2);
+        String formattedResult = Formatter.format(result);
+        state.setCurrentInput(formattedResult);
     }
 }
-*/
+
