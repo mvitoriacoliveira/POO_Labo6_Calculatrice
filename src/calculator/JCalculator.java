@@ -32,7 +32,7 @@ public class JCalculator extends JFrame {
 
     //private String currentInput = "0";
 
-    private State currentState = new State();
+    private State currentState = new State("0");
 
     // Mise a jour de l'interface apres une operation (jList et jStack)
     private void update() {
@@ -136,12 +136,15 @@ public class JCalculator extends JFrame {
     addOperatorButton("/", 3, 2, Color.RED, div);
     addOperatorButton("*", 3, 3, Color.RED, mult);
     addOperatorButton("-", 3, 4, Color.RED, sub);
-    addOperatorButton("+", 3, 5, Color.RED, add);
+    addOperatorButton("+", 3, 5, Color.RED, add);*/
 
     // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
-    addOperatorButton("1/x", 4, 2, Color.RED, inv);
-    addOperatorButton("x^2", 4, 3, Color.RED, squ);
-    addOperatorButton("Sqrt", 4, 4, Color.RED, sqrt);*/
+        Inverse inv = new Inverse(currentState);
+        addOperatorButton("1/x", 4, 2, Color.RED, inv);
+        Squared sq = new Squared(currentState);
+        addOperatorButton("x^2", 4, 3, Color.RED, sq);
+        SquareRoot sqrt = new SquareRoot(currentState);
+        addOperatorButton("Sqrt", 4, 4, Color.RED, sqrt);
 
         // Entree: met la valeur courante sur le sommet de la pile
         /*Enter<> enter = new Enter(currentState, )
