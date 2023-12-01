@@ -1,19 +1,46 @@
-/*
+
 package calculator.Operation;
 
-public class Inverse<T extends Number> extends Operator<T>  {
-    private final T operand1;
+import calculator.State;
+import calculator.Formatter;
 
-    public Inverse(T op1){
-        operand1 = op1;
+
+/**
+ * The {@code Inverse} class represents the operation 1/x.
+ * It extends the {@code Operator} class and implements the {@code execute} method.
+ * The result is formatted using the provided {@code Formatter}.
+ */
+public class Inverse extends Operator {
+
+    /**
+     * Constructs an {@code Inverse} object with the given state.
+     *
+     * @param s The state of the calculator.
+     */
+    public Inverse(State s){
+        super(s);
     }
+
+    /**
+     * Executes the inverse operation (1/x).
+     * If the current input is not zero, calculates the result and updates the state.
+     * Otherwise, throws an {@code ArithmeticException} with the message "Cannot divide by zero."
+     *
+     * @throws ArithmeticException If attempting to divide by zero.
+     */
     @Override
-    public T execute() {
-        if (operand1.doubleValue() != 0) {
-            return (T) Double.valueOf(1 / operand1.doubleValue());
+    public void execute() {
+        double input = Double.parseDouble(state.getCurrentInput());
+
+        if (input != 0) {
+            double result = 1 / input;
+            String formattedResult = Formatter.format(result);
+            state.setCurrentInput(formattedResult);
         } else {
-            throw new ArithmeticException("Cannot divide by 0");
+            //TODO set state error to true and print errorMessage
+            throw new ArithmeticException("Cannot divide by zero.");
         }
+
     }
 }
-*/
+
