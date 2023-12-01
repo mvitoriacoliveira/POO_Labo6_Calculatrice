@@ -1,10 +1,19 @@
-/*
+
 package calculator.Operation;
 
-public class Enter <T extends Number> extends Operator<T> {
+import calculator.State;
+import calculator.Stack;
+
+public class Enter<T> extends Operator {
+    private Stack<T> stack;
+
+    public Enter(State s, Stack<T> stack) {
+        super(s);
+        this.stack = stack;
+    }
+
     @Override
-    public T execute() {
-        return null;
+    public void execute() {
+        stack.push((T) state.getCurrentInput());
     }
 }
-*/

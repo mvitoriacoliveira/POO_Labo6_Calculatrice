@@ -69,7 +69,7 @@ public class JCalculator extends JFrame {
                 NumericKeypad numericKeypad = (NumericKeypad) operator;
                 operator.execute();
                 updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
-            } else if (operator != null)  {
+            } else if (operator != null) {
                 operator.execute();
                 updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
             }
@@ -124,21 +124,15 @@ public class JCalculator extends JFrame {
         NumericKeypad numericKeypadZero = new NumericKeypad(0, currentState);
         addOperatorButton("0", 0, 5, Color.BLUE, numericKeypadZero);
 
-    /*Addition add = new Addition();
-  Substraction sub = new Substraction();
-  Multiplication mult = new Multiplication();
-  Divide div = new Divide();
-  Inverse inv = new Inverse();
-  Squared squ = new Squared();
-  SquareRoot sqrt = new SquareRoot();
-  UnaryOp unop = new UnaryOp();*/
+
     /*// Changement de signe de la valeur courante
-    addOperatorButton("+/-", 1, 5, Color.BLUE, unop);
+    addOperatorButton("+/-", 1, 5, Color.BLUE, unop);*/
 
-    // Operateur point (chiffres apres la virgule ensuite)
-    addOperatorButton(".", 2, 5, Color.BLUE, null);
+        // Operateur point (chiffres apres la virgule ensuite)
+        Dot dot = new Dot(currentState);
+        addOperatorButton(".", 2, 5, Color.BLUE, dot);
 
-    // Operateurs arithmetiques a deux operandes: /, *, -, +
+    /*// Operateurs arithmetiques a deux operandes: /, *, -, +
     addOperatorButton("/", 3, 2, Color.RED, div);
     addOperatorButton("*", 3, 3, Color.RED, mult);
     addOperatorButton("-", 3, 4, Color.RED, sub);
@@ -150,7 +144,8 @@ public class JCalculator extends JFrame {
     addOperatorButton("Sqrt", 4, 4, Color.RED, sqrt);*/
 
         // Entree: met la valeur courante sur le sommet de la pile
-        addOperatorButton("Ent", 4, 5, Color.RED, null);
+        /*Enter<> enter = new Enter(currentState, )
+        addOperatorButton("Ent", 4, 5, Color.RED, enter);*/
 
         // Affichage de la pile
         JLabel jLabel = new JLabel("Stack");
