@@ -1,15 +1,16 @@
-/*
 package calculator.Operation;
+import calculator.State;
 
-public class SquareRoot<T extends Number> extends Operator<T> {
-    private final T operand1;
 
-    public SquareRoot(T op1){
-        operand1 = op1;
+public class SquareRoot extends Operator {
+
+    public SquareRoot(State s){
+        super(s);
     }
-    public T execute() {
-        if (operand1.doubleValue() > 0) {
-            return (T) Double.valueOf(Math.sqrt(operand1.doubleValue()));
+    public void execute() {
+        double input = Double.parseDouble(state.getCurrentInput());
+        if (input >= 0) {
+            state.setCurrentInput(String.valueOf(Math.sqrt(input)));
         } else {
             throw new ArithmeticException("Cannot take the square root of a negative number.");
         }
@@ -17,4 +18,4 @@ public class SquareRoot<T extends Number> extends Operator<T> {
 
 
 }
-*/
+
