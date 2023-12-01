@@ -4,6 +4,8 @@ public class State {
     private Stack<Double> stack = new Stack<Double>();
     private String currentInput;
 
+    private boolean error;
+    private String errorMessage;
     private String memory;
 
     public State(String input){
