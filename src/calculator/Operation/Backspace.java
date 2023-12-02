@@ -12,7 +12,7 @@ public class Backspace extends Operator{
     public void execute() {
         String currentInput = state.getCurrentInput();
 
-        if (currentInput.length() > 0) {
+        if (!currentInput.isEmpty()) {
             currentInput = currentInput.substring(0, currentInput.length() - 1);
             state.setCurrentInput(currentInput);
         }

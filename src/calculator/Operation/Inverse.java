@@ -34,7 +34,6 @@ public class Inverse extends Operator {
 
         try {
             double input = Double.parseDouble(currentInput);
-
             if (input != 0) {
                 double result = 1 / input;
                 state.setCurrentInput(Formatter.format(result));

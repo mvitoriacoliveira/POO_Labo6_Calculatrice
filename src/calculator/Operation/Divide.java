@@ -15,10 +15,8 @@ public class Divide<T> extends Operator {
 
     @Override
     public void execute() {
-
         if (!stack.isEmpty()) {
             T stackTop = stack.pop();
-
             String currentInput = state.getCurrentInput();
 
             try {
@@ -27,7 +25,6 @@ public class Divide<T> extends Operator {
 
                 if (input1 != 0) {
                     double result = input2 / input1;
-
                     state.setCurrentInput(Formatter.format(result));
                 } else {
                     state.setCurrentInput("Infinity");

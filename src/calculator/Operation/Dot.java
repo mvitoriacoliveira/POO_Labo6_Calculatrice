@@ -11,10 +11,11 @@ public class Dot extends Operator{
     public void execute() {
 
         String currentInput = state.getCurrentInput();
-        String newInput = currentInput + ".";
 
-        state.setCurrentInput(newInput);
+        if (!currentInput.contains(".")) {
+            String newInput = currentInput + ".";
+            state.setCurrentInput(newInput);
+        }
     }
 
-    //TODO bloquer si on met 2 virgules dans la même state
 }

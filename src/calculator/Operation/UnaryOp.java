@@ -15,6 +15,7 @@ public class UnaryOp extends Operator {
         double input = Double.parseDouble(state.getCurrentInput());
 
         double result = -input;
+
         String formattedResult = Formatter.format(result);
         state.setCurrentInput(formattedResult);
 
