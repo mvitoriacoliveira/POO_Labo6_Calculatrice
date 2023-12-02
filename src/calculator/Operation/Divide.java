@@ -1,23 +1,40 @@
-/*
 package calculator.Operation;
 
-public class Divide<T extends Number> extends Operator<T>{
+import calculator.Formatter;
+import calculator.State;
+import calculator.Stack;
 
-    private final T operand1;
-    private final T operand2;
+public class Divide<T> extends Operator {
 
-    public Divide(T op1, T op2){
-        operand1 = op1;
-        operand2 = op2;
+    private final Stack<T> stack;
+
+    public Divide(State state, Stack<T> stack) {
+        super(state);
+        this.stack = stack;
     }
+
     @Override
-    public T execute() {
-        if (operand2.doubleValue() != 0) {
-            return (T) Double.valueOf(operand1.doubleValue() / operand2.doubleValue());
-        } else {
-            throw new ArithmeticException("Cannot divide by 0");
+    public void execute() {
+
+        if (!stack.isEmpty()) {
+            T stackTop = stack.pop();
+
+            String currentInput = state.getCurrentInput();
+
+            try {
+                double input1 = Double.parseDouble(currentInput);
+                double input2 = Double.parseDouble(stackTop.toString());
+
+                if (input1 != 0) {
+                    double result = input2 / input1;
+
+                    state.setCurrentInput(Formatter.format(result));
+                } else {
+                    state.setCurrentInput("Infinity");
+                }
+            } catch (NumberFormatException e) {
+                state.setCurrentInput("Error");
+            }
         }
     }
-
 }
-*/

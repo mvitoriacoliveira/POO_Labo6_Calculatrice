@@ -1,15 +1,22 @@
-/*
+
 package calculator.Operation;
 
-public class UnaryOp<T extends Number> extends Operator<T> {
-    private final T operand1;
+import calculator.Formatter;
+import calculator.State;
 
-    public UnaryOp(T op1){
-        operand1 = op1;
+public class UnaryOp extends Operator {
+    public UnaryOp(State s) {
+        super(s);
     }
+
+
     @Override
-    public T execute() {
-        return (T) Double.valueOf(-operand1.doubleValue());
+    public void execute() {
+        double input = Double.parseDouble(state.getCurrentInput());
+
+        double result = -input;
+        String formattedResult = Formatter.format(result);
+        state.setCurrentInput(formattedResult);
+
     }
 }
-*/

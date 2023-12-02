@@ -1,18 +1,36 @@
-/*
 package calculator.Operation;
 
-public class Addition<T extends Number> extends Operator<T> {
+import calculator.Formatter;
+import calculator.State;
+import calculator.Stack;
 
-    private final T operand1;
-    private final T operand2;
+public class Addition<T> extends Operator {
 
-    public Addition(T op1, T op2){
-        operand1 = op1;
-        operand2 = op2;
+    private final Stack<T> stack;
+
+    public Addition(State state, Stack<T> stack) {
+        super(state);
+        this.stack = stack;
     }
+
     @Override
-    public T execute() {
-        return (T) Double.valueOf(operand1.doubleValue() + operand2.doubleValue());
-    }
+    public void execute() {
 
-}*/
+        if (!stack.isEmpty()) {
+            T stackTop = stack.pop();
+            String currentInput = state.getCurrentInput();
+
+            try {
+                double input1 = Double.parseDouble(currentInput);
+                double input2 = Double.parseDouble(stackTop.toString());
+
+                double result = input1 + input2;
+
+                state.setCurrentInput(Formatter.format(result));
+            } catch (NumberFormatException e) {
+
+                state.setCurrentInput("Error");
+            }
+        }
+    }
+}

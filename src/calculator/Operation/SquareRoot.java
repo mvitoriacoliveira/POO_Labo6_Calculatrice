@@ -28,15 +28,19 @@ public class SquareRoot extends Operator {
      */
     @Override
     public void execute() {
-        double input = Double.parseDouble(state.getCurrentInput());
 
-        if (input >= 0) {
-            double result = Math.sqrt(input);
-            String formattedResult = Formatter.format(result);
-            state.setCurrentInput(formattedResult);
-        } else {
-            throw new ArithmeticException("Cannot take the square root of a negative number.");
+        String currentInput = state.getCurrentInput();
+
+        try {
+            double input = Double.parseDouble(currentInput);
+            if (input >= 0) {
+                double result = Math.sqrt(input);
+                state.setCurrentInput(Formatter.format(result));
+            } else {
+                state.setCurrentInput("Error: negative number");
+            }
+        } catch (NumberFormatException e) {
+            state.setCurrentInput("Error");
         }
     }
 }
-

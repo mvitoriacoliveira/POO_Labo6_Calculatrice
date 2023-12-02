@@ -30,15 +30,19 @@ public class Inverse extends Operator {
      */
     @Override
     public void execute() {
-        double input = Double.parseDouble(state.getCurrentInput());
+        String currentInput = state.getCurrentInput();
 
-        if (input != 0) {
-            double result = 1 / input;
-            String formattedResult = Formatter.format(result);
-            state.setCurrentInput(formattedResult);
-        } else {
-            //TODO set state error to true and print errorMessage
-            throw new ArithmeticException("Cannot divide by zero.");
+        try {
+            double input = Double.parseDouble(currentInput);
+
+            if (input != 0) {
+                double result = 1 / input;
+                state.setCurrentInput(Formatter.format(result));
+            } else {
+                state.setCurrentInput("Infinty");
+            }
+        } catch (NumberFormatException e) {
+            state.setCurrentInput("Error");
         }
 
     }
