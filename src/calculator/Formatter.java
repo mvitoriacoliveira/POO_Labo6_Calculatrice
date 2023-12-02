@@ -1,6 +1,8 @@
 package calculator;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 /**
  * The {@code Formatter} class provides a utility method to format double results.
@@ -15,7 +17,6 @@ public class Formatter {
      */
     private static final String DECIMAL_PATTERN = "#.##########";
 
-    //TODO 10 correct?
     /**
      * Formats a double result using the specified decimal pattern.
      * Up to 10 decimal places will be shown if they are present in the number.
@@ -25,7 +26,7 @@ public class Formatter {
      * @return A formatted string representing the double result.
      */
     public static String format(double result) {
-        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_PATTERN);
+        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_PATTERN, DecimalFormatSymbols.getInstance(Locale.US));
         return decimalFormat.format(result);
     }
 }

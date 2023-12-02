@@ -3,6 +3,7 @@ package calculator.Operation;
 import calculator.State;
 import calculator.Stack;
 
+
 public class Clear<T> extends Operator {
 
     private final Stack<T> stack;
@@ -16,11 +17,13 @@ public class Clear<T> extends Operator {
     public void execute() {
         state.setCurrentInput("0");
 
+        //stack.clear();
         int stackSize = stack.getSize();
         for (int i = 0; i < stackSize; i++) {
             stack.pop();
         }
-    }
 
-    //TODO effacer erreurs
+        state.setError(false);
+        state.setErrorMessage(null);
+    }
 }

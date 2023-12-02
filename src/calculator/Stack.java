@@ -33,6 +33,11 @@ public class Stack<T> {
         return data;
     }
 
+    public void clear() {
+        this.top = null;
+        this.size = 0;
+    }
+
     public boolean isEmpty(){
        return this.size == 0;
     }

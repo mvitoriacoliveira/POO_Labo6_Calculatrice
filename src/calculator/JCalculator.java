@@ -54,6 +54,13 @@ public class JCalculator extends JFrame {
         currentState.setCurrentInput(input);
     }
 
+    private void clearAll() {
+        currentState.setCurrentInput("0");
+        stack.clear();
+        jStack.setListData(empty);
+        update();
+    }
+
     // Ajout d'un bouton dans l'interface et de l'operation associee,
     // instance de la classe Operation, possedeant une methode execute()
     private void addOperatorButton(String name, int x, int y, Color color,
@@ -71,6 +78,8 @@ public class JCalculator extends JFrame {
             } else if (operator instanceof Enter) {
                 updateStack();
                 updateCurrentState("0");
+            } else if (operator instanceof Clear) {
+                clearAll();
             } else if (operator != null) {
                 operator.execute();
                 updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
