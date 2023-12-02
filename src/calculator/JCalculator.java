@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -38,13 +39,15 @@ public class JCalculator extends JFrame {
         // Modifier une zone de texte, JTextField.setText(string nom)
         // Modifier un composant liste, JList.setListData(Object[] tableau)
 
-
         jNumber.setText(currentState.getCurrentInput());
+
+    }
+    private void updateStack() {
         stack.push(currentState.getCurrentInput());
         Object[] stackObject = stack.currentState();
-        //jStack.setListData(stackObject);
+        String[] stackStrings = Arrays.copyOf(stackObject, stackObject.length, String[].class);
 
-        //String[] stackData = { currentInput };
+        jStack.setListData(stackStrings);
     }
 
     private void updateCurrentState(String input) {
@@ -65,6 +68,9 @@ public class JCalculator extends JFrame {
                 NumericKeypad numericKeypad = (NumericKeypad) operator;
                 operator.execute();
                 updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
+            } else if (operator instanceof Enter) {
+                updateStack();
+                updateCurrentState("0");
             } else if (operator != null) {
                 operator.execute();
                 updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
@@ -110,7 +116,8 @@ public class JCalculator extends JFrame {
         addOperatorButton("CE", 3, 1, Color.RED, clearError);
 
         // Comme CE + vide la pile
-        addOperatorButton("C", 4, 1, Color.RED, null);
+        Clear clear = new Clear(currentState, stack);
+        addOperatorButton("C", 4, 1, Color.RED, clear);
 
         // Boutons 1-9
         for (int i = 1; i < 10; i++) {
