@@ -51,9 +51,7 @@ public class Calculator {
         public static Operator createOperator(String input, State state, ArrayList<String> stateList) {
 
             State state0;
-
             Stack<String> stackState = new Stack<>();
-
 
             for (String element : stateList) {
                 stackState.push(element);
@@ -66,7 +64,7 @@ public class Calculator {
                 state0 = new State("0");
             }
 
-            System.out.println("state 0 : " + state0.toString());
+            System.out.println("state 0 : " + state0);
 
             switch (input) {
                 case "+":
@@ -98,7 +96,6 @@ public class Calculator {
                 case "exit":
                     System.exit(0);
                 default:
-                    //return null;
                     try {
                         return new NumericKeypad(input, state);
                     } catch (NumberFormatException e) {
@@ -113,10 +110,19 @@ public class Calculator {
         Operator operator = OperatorList.createOperator(input, state, stateList);
 
         if (operator != null) {
-            operator.execute();
+            if (operator instanceof Addition || operator instanceof Subtraction || operator instanceof Multiplication || operator instanceof Divide) {
+                if (state.getStack().getSize() >= 2) {
+                    operator.execute();
+                    stateList.remove(0);
+                    stateList.remove(0);
+                } else {
+                    System.out.println("Not enough elements in the stack for binary operation.");
+                }
+            } else {
+                operator.execute();
+            }
             updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
         }
-
     }
 
     private void updateCurrentState(String input) {
