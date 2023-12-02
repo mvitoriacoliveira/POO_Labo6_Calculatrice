@@ -14,7 +14,7 @@ public class NumericKeypad extends Operator {
     public void execute() {
         String currentInput = state.getCurrentInput();
 
-        String newInput = currentInput + operand;
+        String newInput = currentInput.equals("0") ? String.valueOf(operand) : currentInput + operand;
 
         state.setCurrentInput(newInput);
     }
