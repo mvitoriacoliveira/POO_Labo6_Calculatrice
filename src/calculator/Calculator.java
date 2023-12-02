@@ -52,6 +52,13 @@ public class Calculator {
 
             State state0;
 
+            Stack<String> stackState = new Stack<>();
+
+
+            for (String element : stateList) {
+                stackState.push(element);
+            }
+
             if (!stateList.isEmpty()) {
                 state0 = new State(stateList.get(0));
                 System.out.println("tableau premier élément : " + stateList.get(0));
@@ -62,14 +69,14 @@ public class Calculator {
             System.out.println("state 0 : " + state0.toString());
 
             switch (input) {
-                /*case "+":
-                    return new Addition(state);
-                case "-":
-                    return new Subtraction(state);
+                case "+":
+                    return new Addition(state, stackState);
+               case "-":
+                    return new Subtraction(state, stackState);
                 case "*":
-                    return new Multiplication(state);
+                    return new Multiplication(state, stackState);
                 case "/":
-                    return new Divide(state);*/
+                    return new Divide(state, stackState);
                 case "sqrt":
                     return new SquareRoot(state0);
                 case "x^2":
