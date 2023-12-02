@@ -46,4 +46,8 @@ public class State {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
+    public String toString() {
+        return currentInput;
+    }
 }
