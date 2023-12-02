@@ -1,16 +1,11 @@
 package calculator;
 
 import calculator.Operation.*;
+import static calculator.Formatter.formatOneDecimal;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
-
-import static calculator.Formatter.formatOneDecimal;
 
 public class Calculator {
     private State state;
@@ -20,7 +15,6 @@ public class Calculator {
         this.state = new State("0");
         this.stateList = new ArrayList<>();
     }
-
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -48,8 +42,7 @@ public class Calculator {
 
             state.setCurrentInput("0");
         }
-
-        System.out.println("Exiting Calculator.");
+        System.out.println("exiting calculator");
     }
 
     public static class OperatorList {
@@ -139,28 +132,12 @@ public class Calculator {
                 operator.execute();
                 updateCurrentState(formatOneDecimal(operator.state.getCurrentInput()));
             }
-
         }
     }
 
     private void updateCurrentState(String input) {
         state.setCurrentInput(input);
     }
-
-   /* private String formatWithOneDecimalPlace(String input) {
-        try {
-            input = input.replace(',', '.');
-            double value = Double.parseDouble(input);
-
-            // Formater avec un chiffre après la virgule
-            DecimalFormat decimalFormat = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance(Locale.US));
-
-            return decimalFormat.format(value);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return input; // En cas d'erreur, retourner la chaîne d'origine
-        }
-    }*/
 
     public static void main(String[] args) {
         System.out.println("java calculator");
@@ -170,6 +147,7 @@ public class Calculator {
 }
 
 //TODO mr et ms problème
+//TODO ce et c problème
 //TODO problème dans ordre des opération
 /* EX :
 tableau premier élément : 6.0
