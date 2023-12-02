@@ -2,6 +2,7 @@ package calculator;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.util.Locale;
 
 /**
@@ -28,5 +29,19 @@ public class Formatter {
     public static String format(double result) {
         DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_PATTERN, DecimalFormatSymbols.getInstance(Locale.US));
         return decimalFormat.format(result);
+    }
+
+    static String formatOneDecimal(String input) {
+        try {
+            input = input.replace(',', '.');
+            double value = Double.parseDouble(input);
+
+            DecimalFormat decimalFormat = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance(Locale.US));
+
+            return decimalFormat.format(value);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return input;
+        }
     }
 }
