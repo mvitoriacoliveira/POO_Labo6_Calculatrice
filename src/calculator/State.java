@@ -27,6 +27,10 @@ public class State {
         this.currentInput = currentInput;
     }
 
+    public String getMemory() {return this.memory;}
+
+    public void setMemory(String value) { this.memory = value;}
+
     //getDoubleAsString();
     //getCurrentAsDouble();
 

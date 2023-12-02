@@ -15,7 +15,6 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-//import java.awt.event.*;
 
 public class JCalculator extends JFrame {
     // Tableau representant une pile vide
@@ -30,7 +29,7 @@ public class JCalculator extends JFrame {
     // Contraintes pour le placement des composants graphiques
     private final GridBagConstraints constraints = new GridBagConstraints();
 
-    //private String currentInput = "0";
+    private Stack stack = new Stack();
 
     private State currentState = new State("0");
 
@@ -39,14 +38,11 @@ public class JCalculator extends JFrame {
         // Modifier une zone de texte, JTextField.setText(string nom)
         // Modifier un composant liste, JList.setListData(Object[] tableau)
 
-      /*String result = currentState.getCurrentInput();
-      if (currentInput.equals("0")) {
-          currentInput = result;
-      } else {
-          currentInput += result;
-      }*/
 
         jNumber.setText(currentState.getCurrentInput());
+        stack.push(currentState.getCurrentInput());
+        Object[] stackObject = stack.currentState();
+        //jStack.setListData(stackObject);
 
         //String[] stackData = { currentInput };
     }
@@ -98,10 +94,12 @@ public class JCalculator extends JFrame {
         constraints.gridwidth = 1; // reset width
 
         // Rappel de la valeur en memoire
-        addOperatorButton("MR", 0, 1, Color.RED, null);
+        MemoryRecall mr = new MemoryRecall(currentState);
+        addOperatorButton("MR", 0, 1, Color.RED, mr);
 
         // Stockage d'une valeur en memoire
-        addOperatorButton("MS", 1, 1, Color.RED, null);
+        MemoryStore ms = new MemoryStore(currentState);
+        addOperatorButton("MS", 1, 1, Color.RED, ms);
 
         // Backspace
         Backspace backspace = new Backspace(currentState);
@@ -125,20 +123,25 @@ public class JCalculator extends JFrame {
         addOperatorButton("0", 0, 5, Color.BLUE, numericKeypadZero);
 
 
-    /*// Changement de signe de la valeur courante
-    addOperatorButton("+/-", 1, 5, Color.BLUE, unop);*/
+        // Changement de signe de la valeur courante
+        UnaryOp unaryOp = new UnaryOp(currentState);
+        addOperatorButton("+/-", 1, 5, Color.BLUE, unaryOp);
 
         // Operateur point (chiffres apres la virgule ensuite)
         Dot dot = new Dot(currentState);
         addOperatorButton(".", 2, 5, Color.BLUE, dot);
 
-    /*// Operateurs arithmetiques a deux operandes: /, *, -, +
-    addOperatorButton("/", 3, 2, Color.RED, div);
-    addOperatorButton("*", 3, 3, Color.RED, mult);
-    addOperatorButton("-", 3, 4, Color.RED, sub);
-    addOperatorButton("+", 3, 5, Color.RED, add);*/
+        // Operateurs arithmetiques a deux operandes: /, *, -, +
+        Divide div = new Divide(currentState, stack);
+        addOperatorButton("/", 3, 2, Color.RED, div);
+        Multiplication mult = new Multiplication(currentState, stack);
+        addOperatorButton("*", 3, 3, Color.RED, mult);
+        Subtraction sub = new Subtraction(currentState, stack);
+        addOperatorButton("-", 3, 4, Color.RED, sub);
+        Addition add = new Addition(currentState,stack);
+        addOperatorButton("+", 3, 5, Color.RED, add);
 
-    // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
+        // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
         Inverse inv = new Inverse(currentState);
         addOperatorButton("1/x", 4, 2, Color.RED, inv);
         Squared sq = new Squared(currentState);
@@ -147,8 +150,8 @@ public class JCalculator extends JFrame {
         addOperatorButton("Sqrt", 4, 4, Color.RED, sqrt);
 
         // Entree: met la valeur courante sur le sommet de la pile
-        /*Enter<> enter = new Enter(currentState, )
-        addOperatorButton("Ent", 4, 5, Color.RED, enter);*/
+        Enter enter = new Enter(currentState, stack);
+        addOperatorButton("Ent", 4, 5, Color.RED, enter);
 
         // Affichage de la pile
         JLabel jLabel = new JLabel("Stack");

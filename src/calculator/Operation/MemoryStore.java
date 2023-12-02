@@ -1,10 +1,18 @@
-/*
 package calculator.Operation;
 
-public class MemoryStore <T extends Number> extends Operator<T>{
+import calculator.State;
+
+public class MemoryStore extends Operator{
+
+    public MemoryStore(State s) {
+        super(s);
+    }
+
     @Override
-    public T execute() {
-        return null;
+    public void execute() {
+        String currentInput = state.getCurrentInput();
+
+        state.setMemory(currentInput);
     }
 }
-*/
+
