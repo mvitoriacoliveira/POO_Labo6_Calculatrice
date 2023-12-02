@@ -11,7 +11,7 @@ public class ClearError extends Operator {
     @Override
     public void execute() {
         state.setCurrentInput("0");
+        state.setError(false);
+        state.setErrorMessage(null);
     }
-
-    //TODO effacer erreurs
 }

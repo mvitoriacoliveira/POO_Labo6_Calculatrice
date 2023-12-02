@@ -17,7 +17,6 @@ public class Clear<T> extends Operator {
     public void execute() {
         state.setCurrentInput("0");
 
-        //stack.clear();
         int stackSize = stack.getSize();
         for (int i = 0; i < stackSize; i++) {
             stack.pop();

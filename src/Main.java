@@ -1,7 +1,4 @@
 import calculator.JCalculator;
-import calculator.*; //import Stack, Node, Examinator
-
-import java.util.ArrayList; // for Stack::get.Tab() test
 
 public class Main
 {

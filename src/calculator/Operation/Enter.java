@@ -14,6 +14,12 @@ public class Enter<T> extends Operator {
 
     @Override
     public void execute() {
-        stack.push((T) state.getCurrentInput());
+        String currentInput = state.getCurrentInput();
+
+        double currentValue = Double.parseDouble(currentInput);
+
+        state.getStack().push(currentValue);
+
+        state.setCurrentInput("0");
     }
 }
