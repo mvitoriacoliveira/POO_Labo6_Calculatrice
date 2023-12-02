@@ -2,10 +2,10 @@ package calculator;
 
 import calculator.Operation.*;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
 
 public class Calculator {
     private State state;
@@ -69,7 +69,7 @@ public class Calculator {
             switch (input) {
                 case "+":
                     return new Addition(state0, stackState);
-               case "-":
+                case "-":
                     return new Subtraction(state0, stackState);
                 case "*":
                     return new Multiplication(state0, stackState);
@@ -97,7 +97,9 @@ public class Calculator {
                     System.exit(0);
                 default:
                     try {
-                        return new NumericKeypad(input, state);
+                        /*String pattern = input.repeat(2);
+                        DecimalFormat decimalFormat = new DecimalFormat(pattern);*/
+                        return new NumericKeypad(String.valueOf(input), state);
                     } catch (NumberFormatException e) {
                         System.out.println("Error unknown operator : " + input);
                         return null;
@@ -135,3 +137,6 @@ public class Calculator {
         calculator.run();
     }
 }
+
+//TODO mr et ms problème
+//TODO affichage pas correct
