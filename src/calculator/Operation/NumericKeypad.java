@@ -3,9 +3,9 @@ package calculator.Operation;
 import calculator.State;
 
 public class NumericKeypad extends Operator {
-    private final int operand;
+    private final String operand;
 
-    public NumericKeypad(int operand, State state) {
+    public NumericKeypad(String operand, State state) {
         super(state);
         this.operand = operand;
     }
@@ -14,7 +14,7 @@ public class NumericKeypad extends Operator {
     public void execute() {
         String currentInput = state.getCurrentInput();
 
-        String newInput = currentInput.equals("0") ? String.valueOf(operand) : currentInput + operand;
+        String newInput = currentInput.equals("0") ? operand : currentInput + operand;
 
         state.setCurrentInput(newInput);
     }

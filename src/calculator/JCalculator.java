@@ -130,12 +130,12 @@ public class JCalculator extends JFrame {
 
         // Boutons 1-9
         for (int i = 1; i < 10; i++) {
-            NumericKeypad numericKeypad = new NumericKeypad(i, currentState);
+            NumericKeypad numericKeypad = new NumericKeypad(String.valueOf(i), currentState);
             addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
                     Color.BLUE, numericKeypad);
         }
         // Bouton 0
-        NumericKeypad numericKeypadZero = new NumericKeypad(0, currentState);
+        NumericKeypad numericKeypadZero = new NumericKeypad(String.valueOf(0), currentState);
         addOperatorButton("0", 0, 5, Color.BLUE, numericKeypadZero);
 
 

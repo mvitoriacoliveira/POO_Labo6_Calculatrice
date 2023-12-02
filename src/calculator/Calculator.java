@@ -70,13 +70,13 @@ public class Calculator {
 
             switch (input) {
                 case "+":
-                    return new Addition(state, stackState);
+                    return new Addition(state0, stackState);
                case "-":
-                    return new Subtraction(state, stackState);
+                    return new Subtraction(state0, stackState);
                 case "*":
-                    return new Multiplication(state, stackState);
+                    return new Multiplication(state0, stackState);
                 case "/":
-                    return new Divide(state, stackState);
+                    return new Divide(state0, stackState);
                 case "sqrt":
                     return new SquareRoot(state0);
                 case "x^2":
@@ -93,17 +93,16 @@ public class Calculator {
                     return new Backspace(state0);
                 case "ce":
                     return new ClearError(state0);
-                /*case "c":
-                    return new Clear(state);*/
+                case "c":
+                    return new Clear(state0, stackState);
                 case "exit":
                     System.exit(0);
                 default:
+                    //return null;
                     try {
-                        int number = Integer.parseInt(input);
-                        return new NumericKeypad(number, state);
+                        return new NumericKeypad(input, state);
                     } catch (NumberFormatException e) {
-                        // Si ce n'est ni un opérateur ni un nombre valide, retournez null
-                        System.out.println("Opérateur inconnu : " + input);
+                        System.out.println("Error unknown operator : " + input);
                         return null;
                     }
             }
