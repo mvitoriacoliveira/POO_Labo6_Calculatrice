@@ -1,3 +1,4 @@
+/*
 package calculator;
 
 import calculator.Operation.*;
@@ -100,9 +101,11 @@ public class Calculator {
                     } catch (NumberFormatException e) {
                         System.out.println("Error unknown operator : " + input);
                         return null;
-                    } /*catch (ParseException e) {
+                    } */
+/*catch (ParseException e) {
                         throw new RuntimeException(e);
-                    }*/
+                    }*//*
+
             }
         }
     }
@@ -149,6 +152,7 @@ public class Calculator {
 //TODO mr et ms problème
 //TODO ce et c problème
 //TODO problème dans ordre des opération
+*/
 /* EX :
 tableau premier élément : 6.0
         state 0 : current state : 6.0 current stack : []
@@ -156,4 +160,6 @@ tableau premier élément : 6.0
         > -
         tableau premier élément : 5.0
         state 0 : current state : 5.0 current stack : []
-        [-5, 0]*/
+        [-5, 0]*//*
+
+*/

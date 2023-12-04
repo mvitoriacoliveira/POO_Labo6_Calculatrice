@@ -31,7 +31,7 @@ public class Formatter {
         return decimalFormat.format(result);
     }
 
-    static String formatOneDecimal(String input) {
+   /* static String formatOneDecimal(String input) {
         try {
             input = input.replace(',', '.');
             double value = Double.parseDouble(input);
@@ -43,5 +43,5 @@ public class Formatter {
             e.printStackTrace();
             return input;
         }
-    }
+    }*/
 }
