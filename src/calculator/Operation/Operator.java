@@ -13,4 +13,8 @@ public abstract class Operator {
   }
 
   public abstract void execute();
+
+  protected boolean ErrorState() {
+    return state.isError();
+  }
 }

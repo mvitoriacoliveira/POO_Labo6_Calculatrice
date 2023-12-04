@@ -29,6 +29,7 @@ public class Addition<T> extends Operator {
                 state.setCurrentInput(Formatter.format(result));
             } catch (NumberFormatException e) {
                 state.setCurrentInput("Error");
+                state.setError(true);
             }
         }
     }

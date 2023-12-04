@@ -28,9 +28,12 @@ public class Divide<T> extends Operator {
                     state.setCurrentInput(Formatter.format(result));
                 } else {
                     state.setCurrentInput("Infinity");
+                    state.setError(true);
+                    state.setErrorMessage("Infinity");
                 }
             } catch (NumberFormatException e) {
                 state.setCurrentInput("Error");
+                state.setError(true);
             }
         }
     }

@@ -38,6 +38,7 @@ public class SquareRoot extends Operator {
                 state.setCurrentInput(Formatter.format(result));
             } else {
                 state.setCurrentInput("Error: negative number");
+                state.setError(true);
             }
         } catch (NumberFormatException e) {
             state.setCurrentInput("Error");

@@ -12,11 +12,13 @@ public class NumericKeypad extends Operator {
 
     @Override
     public void execute() {
-        String currentInput = state.getCurrentInput();
-
-        String newInput = currentInput.equals("0") ? operand : currentInput + operand;
-
-        state.setCurrentInput(newInput);
+        if (!ErrorState()) {
+            String currentInput = state.getCurrentInput();
+            String newInput = currentInput.equals("0") ? operand : currentInput + operand;
+            state.setCurrentInput(newInput);
+        } else {
+            state.setError(true);
+        }
     }
 
 }

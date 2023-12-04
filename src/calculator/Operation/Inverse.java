@@ -39,9 +39,11 @@ public class Inverse extends Operator {
                 state.setCurrentInput(Formatter.format(result));
             } else {
                 state.setCurrentInput("Infinty");
+                state.setError(true);
             }
         } catch (NumberFormatException e) {
             state.setCurrentInput("Error");
+            state.setError(true);
         }
 
     }
