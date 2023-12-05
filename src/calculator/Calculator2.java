@@ -8,7 +8,6 @@ public class Calculator2 {
     private State state;
     private Stack stack;
 
-
     public Calculator2() {
         this.state = new State("0");
         this.stack = state.getStack();
@@ -24,12 +23,11 @@ public class Calculator2 {
             if (input.equalsIgnoreCase("exit")) {
                 break;
             }
+
             processInput(input);
 
-            //state.getStack().push(Double.parseDouble(input));
-
-            System.out.println(state.getStack());
             System.out.println("State : " + state);
+            System.out.println("Current input : " + state.getCurrentInput());
         }
         System.out.println("exiting calculator");
     }
@@ -37,9 +35,7 @@ public class Calculator2 {
     public static class OperatorList {
         public static Operator createOperator(String input, State state, Stack stack) {
 
-            //Stack<String> stackState = stack;
-
-            stack.push(input);
+            //State currentInput = ;
 
             switch (input) {
                 case "+":
@@ -82,11 +78,18 @@ public class Calculator2 {
     }
 
     private void processInput(String input) {
+
         Operator operator = OperatorList.createOperator(input, state, state.getStack());
 
-
         operator.execute();
-        updateCurrentState(operator.state.getCurrentInput());
+        stack.push(input);
+
+        updateCurrentState(state.getCurrentInput());
+        if (!(operator instanceof NumericKeypad)){
+            stack.pop();
+            operator.execute();
+            stack.push(state.getCurrentInput());
+        }
     }
 
 

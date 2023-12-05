@@ -19,6 +19,10 @@ public class State {
         return this.stack;
     }
 
+    public void setStack(Stack<Double> stack) {
+        this.stack = stack;
+    }
+
     public String getCurrentInput(){
         return  this.currentInput;
     }
@@ -48,6 +52,6 @@ public class State {
     }
 
     public String toString() {
-        return ("current state : " + currentInput + " current stack : " + getStack().toString());
+        return (currentInput + " current stack : " + getStack().toString());
     }
 }
