@@ -44,7 +44,6 @@ public class Formatter {
                 input = input.replace(',', '.');
                 return input;
             }
-
         } catch (NumberFormatException e) {
             e.printStackTrace();
             return input;

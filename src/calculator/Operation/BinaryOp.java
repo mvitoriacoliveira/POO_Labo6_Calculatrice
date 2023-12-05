@@ -41,5 +41,4 @@ public abstract class BinaryOp<T> extends Operator{
     }
 
     protected abstract double calculateResult(double input1, double input2);
-
 }

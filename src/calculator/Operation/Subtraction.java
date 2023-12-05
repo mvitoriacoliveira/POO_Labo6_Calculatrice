@@ -21,6 +21,6 @@ public class Subtraction<T> extends BinaryOp<T> {
 
     @Override
     protected double calculateResult(double input1, double input2) {
-        return input1 - input2;
+        return input2 - input1;
     }
 }

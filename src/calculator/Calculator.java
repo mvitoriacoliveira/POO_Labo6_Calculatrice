@@ -69,7 +69,7 @@ public class Calculator {
                 case "1/x":
                     stack.pop();
                     return new Inverse(state);
-                case "-/+":
+                case "+/-":
                     stack.pop();
                     return new UnaryOp(state);
                 case "mr":
