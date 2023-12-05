@@ -70,7 +70,7 @@ public class Stack<T> {
         return ret.append("]").toString();
     }
 
-    public Object[] currentState(){
+    public Object[] toArray(){
         ArrayList<T> tab = new ArrayList<>();
         Iterator<T> it = new Iterator<>(this.top);
 

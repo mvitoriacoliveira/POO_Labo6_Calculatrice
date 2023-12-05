@@ -51,7 +51,7 @@ public class JCalculator extends JFrame {
     }
     private void updateStack() {
         stack.push(currentState.getCurrentInput());
-        Object[] stackObject = stack.currentState();
+        Object[] stackObject = stack.toArray();
         String[] stackStrings = Arrays.copyOf(stackObject, stackObject.length, String[].class);
 
         jStack.setListData(stackStrings);
