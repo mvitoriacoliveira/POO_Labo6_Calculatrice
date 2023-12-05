@@ -30,7 +30,6 @@ public abstract class BinaryOp<T> extends Operator{
             } catch (ArithmeticException e){
                 state.setCurrentInput("Infinity");
                 state.setError(true);
-                state.setErrorMessage("Infinity");
             }
         }
     }

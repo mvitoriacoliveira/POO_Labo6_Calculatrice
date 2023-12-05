@@ -35,7 +35,6 @@ public class Divide<T> extends BinaryOp<T> {
                 } else {
                     state.setCurrentInput("Infinity");
                     state.setError(true);
-                    state.setErrorMessage("Infinity");
                 }
             } catch (NumberFormatException e) {
                 state.setCurrentInput("Error");
