@@ -81,15 +81,22 @@ public class Calculator2 {
 
         Operator operator = OperatorList.createOperator(input, state, state.getStack());
 
-        operator.execute();
+        //operator.execute();
         stack.push(input);
 
-        updateCurrentState(state.getCurrentInput());
+        //updateCurrentState(state.getCurrentInput());
         if (!(operator instanceof NumericKeypad)){
             stack.pop();
             operator.execute();
             stack.push(state.getCurrentInput());
+            updateCurrentState(input);
         }
+        else {
+            operator.execute();
+            state.setCurrentInput(input);
+        }
+        System.out.println("State : " + state);
+        System.out.println("Current input : " + state.getCurrentInput());
     }
 
 
