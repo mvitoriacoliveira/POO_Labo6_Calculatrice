@@ -13,13 +13,10 @@ import calculator.Stack;
  * @author Camille Koestli
  * @since 05.12.23
  */
-public class Divide<T> extends Operator {
-
-    private final Stack<T> stack;
+public class Divide<T> extends BinaryOp<T> {
 
     public Divide(State state, Stack<T> stack) {
-        super(state);
-        this.stack = stack;
+        super(state, stack);
     }
 
     @Override
@@ -45,5 +42,12 @@ public class Divide<T> extends Operator {
                 state.setError(true);
             }
         }
+    }
+
+    protected double calculateResult(double input1, double input2) {
+        if (input1 == 0) {
+            throw new ArithmeticException();
+        }
+        return input2 / input1;
     }
 }

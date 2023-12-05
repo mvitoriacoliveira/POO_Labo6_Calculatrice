@@ -13,33 +13,15 @@ import calculator.Stack;
  * @author Camille Koestli
  * @since 05.12.23
  */
-public class Multiplication<T> extends Operator {
-
-    private final Stack<T> stack;
+public class Multiplication<T> extends BinaryOp<T> {
 
     public Multiplication(State state, Stack<T> stack) {
-        super(state);
-        this.stack = stack;
+        super(state, stack);
     }
 
-    @Override
-    public void execute() {
-
-        if (!stack.isEmpty()) {
-            T stackTop = stack.pop();
-            String currentInput = state.getCurrentInput();
-
-            try {
-                double input1 = Double.parseDouble(currentInput);
-                double input2 = Double.parseDouble(stackTop.toString());
-
-                double result = input1 * input2;
-
-                state.setCurrentInput(Formatter.format(result));
-            } catch (NumberFormatException e) {
-                state.setCurrentInput("Error");
-                state.setError(true);
-            }
-        }
+    protected double calculateResult(double input1, double input2) {
+        return input1 * input2;
     }
 }
+
+

@@ -13,33 +13,14 @@ import calculator.Stack;
  * @author Camille Koestli
  * @since 05.12.23
  */
-public class Subtraction<T> extends Operator {
-
-    private final Stack<T> stack;
+public class Subtraction<T> extends BinaryOp<T> {
 
     public Subtraction(State state, Stack<T> stack) {
-        super(state);
-        this.stack = stack;
+        super(state, stack);
     }
 
     @Override
-    public void execute() {
-        if (!stack.isEmpty()) {
-            T stackTop = stack.pop();
-
-            String currentInput = state.getCurrentInput();
-
-            try {
-                double input1 = Double.parseDouble(currentInput);
-                double input2 = Double.parseDouble(stackTop.toString());
-
-                double result = input2 - input1;
-
-                state.setCurrentInput(Formatter.format(result));
-            } catch (NumberFormatException e) {
-                state.setCurrentInput("Error");
-                state.setError(true);
-            }
-        }
+    protected double calculateResult(double input1, double input2) {
+        return input1 - input2;
     }
 }
