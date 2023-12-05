@@ -63,12 +63,16 @@ public class Calculator2 {
                 case "mr":
                     return new MemoryRecall(state);
                 case "ms":
+                    stack.pop();
                     return new MemoryStore(state);
                 case "<=":
+                    stack.pop();
                     return new Backspace(state);
                 case "ce":
+                    stack.pop();
                     return new ClearError(state);
                 case "c":
+                    stack.pop();
                     return new Clear(state, stack);
                 case "exit":
                     System.exit(0);
@@ -86,7 +90,6 @@ public class Calculator2 {
     private void processInput(String input) {
 
         Operator operator = OperatorList.createOperator(input, state, state.getStack());
-
         stack.push(input);
 
         if (!(operator instanceof NumericKeypad)){
