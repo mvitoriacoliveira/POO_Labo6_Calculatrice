@@ -100,20 +100,23 @@ public class Calculator {
     }
 
     private void processInput(String input) {
-
         Operator operator = OperatorList.createOperator(input, state, state.getStack());
-        stack.push(formatOneDecimal(input));
+        if (!state.isError()) {
+            stack.push(formatOneDecimal(input));
 
-        if (!(operator instanceof NumericKeypad)){
-            stack.pop();
-            operator.execute();
+            if (!(operator instanceof NumericKeypad)) {
+                stack.pop();
+                operator.execute();
 
-            double result = Double.parseDouble(state.getCurrentInput());
-            stack.push(state.getCurrentInput());
+                double result = Double.parseDouble(state.getCurrentInput());
+                stack.push(state.getCurrentInput());
 
-            state.setCurrentInput(String.valueOf(result));
-        }
-        else {
+                state.setCurrentInput(String.valueOf(result));
+            } else {
+                operator.execute();
+                state.setCurrentInput(input);
+            }
+        } else if (operator instanceof Clear || operator instanceof ClearError) {
             operator.execute();
             state.setCurrentInput(input);
         }

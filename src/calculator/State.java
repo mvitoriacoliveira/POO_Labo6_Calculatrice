@@ -10,7 +10,6 @@ package calculator;
 public class State {
     private Stack<Double> stack = new Stack<Double>();
     private String currentInput;
-
     private boolean error;
     private String memory;
 
