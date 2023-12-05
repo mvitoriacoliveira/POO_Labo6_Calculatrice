@@ -2,6 +2,8 @@ package calculator.Operation;
 
 import calculator.State;
 
+import static calculator.Formatter.isNumeric;
+
 /**
  * Represents a numeric keypad operation in a calculator.
  *
@@ -21,8 +23,14 @@ public class NumericKeypad extends Operator {
     public void execute() {
         if (!ErrorState()) {
             String currentInput = state.getCurrentInput();
-            String newInput = currentInput.equals("0") ? operand : currentInput + operand;
-            state.setCurrentInput(newInput);
+
+            if (isNumeric(currentInput + operand)) {
+                String newInput = currentInput.equals("0") ? operand : currentInput + operand;
+                state.setCurrentInput(newInput);
+            } else {
+                state.setError(true);
+                System.err.println("Invalid input: " + operand);
+            }
         } else {
             state.setError(true);
         }
