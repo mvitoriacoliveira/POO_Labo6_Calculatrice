@@ -35,10 +35,9 @@ public class Calculator2 {
     public static class OperatorList {
         public static Operator createOperator(String input, State state, Stack stack) {
 
-            //State currentInput = ;
-
             switch (input) {
                 case "+":
+                    stack.pop();
                     return new Addition(state, stack);
                 case "-":
                     return new Subtraction(state, stack);
@@ -81,15 +80,13 @@ public class Calculator2 {
 
         Operator operator = OperatorList.createOperator(input, state, state.getStack());
 
-        //operator.execute();
         stack.push(input);
 
-        //updateCurrentState(state.getCurrentInput());
         if (!(operator instanceof NumericKeypad)){
             stack.pop();
             operator.execute();
             stack.push(state.getCurrentInput());
-            updateCurrentState(input);
+            state.setCurrentInput(input);
         }
         else {
             operator.execute();
@@ -99,14 +96,8 @@ public class Calculator2 {
         System.out.println("Current input : " + state.getCurrentInput());
     }
 
-
-    private void updateCurrentState(String input) {
-        state.setCurrentInput(input);
-    }
-
     public static void main(String[] args) {
         System.out.println("java calculator");
-        System.out.println("HELLO");
         Calculator2 calculator = new Calculator2();
         calculator.run();
     }
