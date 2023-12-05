@@ -4,6 +4,14 @@ package calculator.Operation;
 import calculator.State;
 import calculator.Stack;
 
+/**
+ * Represents the enter operator in a calculator.
+ * The current state will be placed on top of the stack.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Enter<T> extends Operator {
     private Stack<T> stack;
 

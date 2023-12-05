@@ -3,7 +3,14 @@ package calculator.Operation;
 import calculator.State;
 import calculator.Stack;
 
-
+/**
+ * Represents the clear operator in a calculator.
+ * This class will clear the current state, stack, and any possible errors to reset everything to zero.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Clear<T> extends Operator {
 
     private final Stack<T> stack;

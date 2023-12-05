@@ -1,6 +1,15 @@
 package calculator;
-import java.util.ArrayList; //ArrayList for current Stack state
+import java.util.ArrayList;
 
+/**
+ * A generic stack implementation.
+ *
+ * @param <T> The type of elements stored in the stack.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Stack<T> {
     private Node<T> top;
     private int size = 0;
@@ -75,10 +84,4 @@ public class Stack<T> {
     public Iterator<T> iterator(){
         return new Iterator<>(this.top);
     }
-
-    /*
-    - obtenir la représentation sous la forme de chaîne de caractères du contenu de la pile ;
-    - obtenir un tableau d’objets représentant l’état actuel de la pile (l’indice 0 contenant l’élément placé au sommet de la pile) ;
-    - obtenir un itérateur sur la pile offrant les opérations T next() et boolean hasNext().
-    */
 }

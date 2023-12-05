@@ -7,6 +7,10 @@ import calculator.Formatter;
  * The {@code SquareRoot} class represents the square root operation (√x).
  * It extends the {@code Operator} class and implements the {@code execute} method.
  * The result is formatted using the provided {@code Formatter}.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
  */
 public class SquareRoot extends Operator {
 

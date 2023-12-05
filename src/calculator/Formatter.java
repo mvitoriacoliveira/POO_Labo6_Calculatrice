@@ -9,8 +9,11 @@ import java.util.Locale;
  * The {@code Formatter} class provides a utility method to format double results.
  * It uses DecimalFormat to format the double result based on a specified pattern.
  * Adjust the pattern in the {@code DECIMAL_PATTERN} constant as needed.
+ *
+ *  @author Vitoria Oliveira
+ *  @author Camille Koestli
+ *  @since 05.12.23
  */
-
 public class Formatter {
     /**
      * The decimal pattern used for formatting double results.

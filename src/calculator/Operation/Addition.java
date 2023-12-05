@@ -4,6 +4,15 @@ import calculator.Formatter;
 import calculator.State;
 import calculator.Stack;
 
+/**
+ * Represents the addition operator in a calculator.
+ *
+ * @param <T> The type of elements stored in the stack.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Addition<T> extends Operator {
 
     private final Stack<T> stack;

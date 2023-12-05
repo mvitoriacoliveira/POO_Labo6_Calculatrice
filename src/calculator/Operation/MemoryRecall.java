@@ -2,6 +2,14 @@ package calculator.Operation;
 
 import calculator.State;
 
+/**
+ * Represents the memory recall operator in a calculator.
+ * The value stored in memory will be retrieved and displayed.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class MemoryRecall extends Operator{
 
     public MemoryRecall(State s) {

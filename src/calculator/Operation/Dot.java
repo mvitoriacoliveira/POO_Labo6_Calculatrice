@@ -1,6 +1,13 @@
 package calculator.Operation;
 import calculator.State;
 
+/**
+ * Represents the dot operator in a calculator.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Dot extends Operator{
 
     public Dot (State state) {

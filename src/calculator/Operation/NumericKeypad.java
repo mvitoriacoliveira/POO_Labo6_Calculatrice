@@ -2,6 +2,13 @@ package calculator.Operation;
 
 import calculator.State;
 
+/**
+ * Represents a numeric keypad operation in a calculator.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class NumericKeypad extends Operator {
     private final String operand;
 

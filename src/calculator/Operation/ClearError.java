@@ -2,6 +2,14 @@ package calculator.Operation;
 
 import calculator.State;
 
+/**
+ * Represents the clear operator in a calculator.
+ * This class will clear the current state and any possible errors to reset everything to zero.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class ClearError extends Operator {
 
     public ClearError(State state) {

@@ -6,6 +6,17 @@ import java.util.Scanner;
 
 import static calculator.Formatter.formatOneDecimal;
 
+/**
+ * The Calculator class represents a simple calculator with basic arithmetic operations.
+ * It utilizes a stack-based approach to process user input and perform calculations.
+ * The calculator supports addition, subtraction, multiplication, division, square root,
+ * squared, inverse, unary operation, memory recall, memory store, backspace, clear error,
+ * and clear operations. The calculator runs in a command-line interface.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Calculator {
     private State state;
     private Stack stack;

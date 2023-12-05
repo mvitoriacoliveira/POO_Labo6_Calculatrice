@@ -1,5 +1,12 @@
 package calculator;
 
+/**
+ * Represents the state of a calculator, including the stack, current input, and error information.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class State {
     private Stack<Double> stack = new Stack<Double>();
     private String currentInput;

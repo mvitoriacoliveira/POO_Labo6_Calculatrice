@@ -16,7 +16,14 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-
+/**
+ * JCalculator is a simple calculator GUI using Swing components.
+ * It provides basic arithmetic operations and memory functions with a visual representation of the stack.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class JCalculator extends JFrame {
     // Tableau representant une pile vide
     private static final String[] empty = {"< empty stack >"};
@@ -72,7 +79,6 @@ public class JCalculator extends JFrame {
         getContentPane().add(b, constraints);
         b.addActionListener((e) -> {
             if (operator instanceof NumericKeypad) {
-                NumericKeypad numericKeypad = (NumericKeypad) operator;
                 operator.execute();
                 updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
             } else if (operator instanceof Enter) {
@@ -85,7 +91,6 @@ public class JCalculator extends JFrame {
                 updateCurrentState(String.valueOf(operator.state.getCurrentInput()));
             }
             update();
-
         });
     }
 

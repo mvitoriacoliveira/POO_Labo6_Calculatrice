@@ -1,5 +1,12 @@
 package calculator;
 
+/**
+ * Represents a node in a linked list.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Node<T>{
     T data;
     Node<T> next;
@@ -10,6 +17,4 @@ public class Node<T>{
     Node(T data){
         new Node<T>(data, null);
     }
-
-    // TODO destructor?
 }

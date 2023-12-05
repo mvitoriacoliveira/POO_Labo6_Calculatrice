@@ -3,6 +3,13 @@ package calculator.Operation;
 
 import calculator.State;
 
+/**
+ * Represents the backspace operator in a calculator.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Backspace extends Operator{
     public Backspace(State s) {
         super(s);
@@ -18,4 +25,3 @@ public class Backspace extends Operator{
         }
     }
 }
-

@@ -3,6 +3,13 @@ package calculator.Operation;
 import calculator.State;
 import calculator.Formatter;
 
+/**
+ * Represents a squared operation in a calculator.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public class Squared extends Operator {
 
     public Squared(State state) {

@@ -2,6 +2,13 @@ package calculator.Operation;
 
 import calculator.State;
 
+/**
+ * An abstract class representing an operator in a calculator.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
+ */
 public abstract class Operator {
 
   public Operator operator;

@@ -4,11 +4,14 @@ package calculator.Operation;
 import calculator.State;
 import calculator.Formatter;
 
-
 /**
  * The {@code Inverse} class represents the operation 1/x.
  * It extends the {@code Operator} class and implements the {@code execute} method.
  * The result is formatted using the provided {@code Formatter}.
+ *
+ * @author Vitoria Oliveira
+ * @author Camille Koestli
+ * @since 05.12.23
  */
 public class Inverse extends Operator {
 
