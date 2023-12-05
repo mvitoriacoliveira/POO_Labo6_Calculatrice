@@ -20,6 +20,5 @@ public class ClearError extends Operator {
     public void execute() {
         state.setCurrentInput("0");
         state.setError(false);
-        state.setErrorMessage(null);
     }
 }
