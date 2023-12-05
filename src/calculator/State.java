@@ -12,7 +12,6 @@ public class State {
     private String currentInput;
 
     private boolean error;
-    private String errorMessage;
     private String memory;
 
     public State(String input){
@@ -49,15 +48,6 @@ public class State {
     public void setError(boolean error) {
         this.error = error;
     }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-
     public String toString() {
         return (getStack().toString());
     }
