@@ -40,18 +40,25 @@ public class Calculator2 {
                     stack.pop();
                     return new Addition(state, stack);
                 case "-":
+                    stack.pop();
                     return new Subtraction(state, stack);
                 case "*":
+                    stack.pop();
                     return new Multiplication(state, stack);
                 case "/":
+                    stack.pop();
                     return new Divide(state, stack);
                 case "sqrt":
+                    stack.pop();
                     return new SquareRoot(state);
                 case "x^2":
+                    stack.pop();
                     return new Squared(state);
                 case "1/x":
+                    stack.pop();
                     return new Inverse(state);
                 case "-/+":
+                    stack.pop();
                     return new UnaryOp(state);
                 case "mr":
                     return new MemoryRecall(state);
@@ -85,8 +92,11 @@ public class Calculator2 {
         if (!(operator instanceof NumericKeypad)){
             stack.pop();
             operator.execute();
+
+            double result = Double.parseDouble(state.getCurrentInput());
             stack.push(state.getCurrentInput());
-            state.setCurrentInput(input);
+
+            state.setCurrentInput(String.valueOf(result));
         }
         else {
             operator.execute();
