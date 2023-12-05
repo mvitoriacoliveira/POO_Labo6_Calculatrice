@@ -31,17 +31,29 @@ public class Formatter {
         return decimalFormat.format(result);
     }
 
-   /* static String formatOneDecimal(String input) {
+    static String formatOneDecimal(String input) {
         try {
-            input = input.replace(',', '.');
-            double value = Double.parseDouble(input);
+            if ( isNumeric(input) && !(input.contains(".")) && !(input.contains(","))) {
+                double value = Double.parseDouble(input);
+                DecimalFormat decimalFormat = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance(Locale.US));
+                return decimalFormat.format(value);
+            } else {
+                input = input.replace(',', '.');
+                return input;
+            }
 
-            DecimalFormat decimalFormat = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance(Locale.US));
-
-            return decimalFormat.format(value);
         } catch (NumberFormatException e) {
             e.printStackTrace();
             return input;
         }
-    }*/
+    }
+
+    static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

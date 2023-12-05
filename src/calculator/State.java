@@ -52,6 +52,6 @@ public class State {
     }
 
     public String toString() {
-        return (currentInput + " current stack : " + getStack().toString());
+        return (getStack().toString());
     }
 }
