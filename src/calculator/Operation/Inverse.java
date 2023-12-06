@@ -1,8 +1,8 @@
 
 package calculator.Operation;
 
-import calculator.State;
-import calculator.Formatter;
+import calculator.util.State;
+import calculator.format.Formatter;
 
 /**
  * The {@code Inverse} class represents the operation 1/x.

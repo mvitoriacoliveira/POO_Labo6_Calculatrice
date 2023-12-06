@@ -1,8 +1,8 @@
 package calculator.Operation;
 
-import calculator.State;
+import calculator.util.State;
 
-import static calculator.Formatter.isNumeric;
+import static calculator.format.Formatter.isNumeric;
 
 /**
  * Represents a numeric keypad operation in a calculator.

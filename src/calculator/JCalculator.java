@@ -1,6 +1,8 @@
 package calculator;
 
 import calculator.Operation.*;
+import calculator.util.Stack;
+import calculator.util.State;
 
 import java.awt.Color;
 import java.awt.Font;

@@ -1,8 +1,8 @@
 package calculator.Operation;
 
-import calculator.Formatter;
-import calculator.State;
-import calculator.Stack;
+import calculator.format.Formatter;
+import calculator.util.State;
+import calculator.util.Stack;
 
 public abstract class BinaryOp<T> extends Operator{
 

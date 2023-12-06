@@ -1,4 +1,6 @@
-package calculator;
+package calculator.util;
+
+import calculator.util.Stack;
 
 /**
  * Represents the state of a calculator, including the stack, current input, and error information.

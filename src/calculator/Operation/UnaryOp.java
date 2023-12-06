@@ -1,8 +1,8 @@
 
 package calculator.Operation;
 
-import calculator.Formatter;
-import calculator.State;
+import calculator.format.Formatter;
+import calculator.util.State;
 
 /**
  * Represents a unary operation in a calculator.

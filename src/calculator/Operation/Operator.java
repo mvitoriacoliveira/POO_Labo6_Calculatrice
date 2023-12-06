@@ -1,6 +1,6 @@
 package calculator.Operation;
 
-import calculator.State;
+import calculator.util.State;
 
 /**
  * An abstract class representing an operator in a calculator.

@@ -1,8 +1,8 @@
 
 package calculator.Operation;
 
-import calculator.State;
-import calculator.Stack;
+import calculator.util.State;
+import calculator.util.Stack;
 
 /**
  * Represents the enter operator in a calculator.

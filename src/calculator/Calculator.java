@@ -1,10 +1,12 @@
 package calculator;
 
 import calculator.Operation.*;
+import calculator.util.Stack;
+import calculator.util.State;
 
 import java.util.Scanner;
 
-import static calculator.Formatter.formatOneDecimal;
+import static calculator.format.Formatter.formatOneDecimal;
 
 /**
  * The Calculator class represents a simple calculator with basic arithmetic operations.

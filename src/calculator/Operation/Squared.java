@@ -1,7 +1,7 @@
 package calculator.Operation;
 
-import calculator.State;
-import calculator.Formatter;
+import calculator.util.State;
+import calculator.format.Formatter;
 
 /**
  * Represents a squared operation in a calculator.

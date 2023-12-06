@@ -1,6 +1,6 @@
 package calculator.Operation;
 
-import calculator.State;
+import calculator.util.State;
 
 /**
  * Represents the memory recall operator in a calculator.
