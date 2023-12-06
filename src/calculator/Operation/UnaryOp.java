@@ -10,6 +10,7 @@ import calculator.util.State;
  * @author Vitoria Oliveira
  * @author Camille Koestli
  * @since 05.12.23
+ * @see Operator
  */
 public class UnaryOp extends Operator {
     public UnaryOp(State s) {
