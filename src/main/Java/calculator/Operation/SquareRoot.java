@@ -4,18 +4,19 @@ import Java.calculator.util.State;
 import Java.calculator.format.Formatter;
 
 /**
- * The {@code SquareRoot} class represents the square root operation (√x).
- * It extends the {@code Operator} class and implements the {@code execute} method.
- * The result is formatted using the provided {@code Formatter}.
+ * The SquareRoot class represents the square root operation (√x).
+ * It extends the Operator class and implements the execute method.
+ * The result is formatted using the provided Formatter.
  *
  * @author Vitoria Oliveira
  * @author Camille Koestli
  * @since 05.12.23
+ * @see Operator
  */
 public class SquareRoot extends Operator {
 
     /**
-     * Constructs a {@code SquareRoot} object with the given state.
+     * Constructs a SquareRoot object with the given state.
      *
      * @param s The state of the calculator.
      */
@@ -26,7 +27,7 @@ public class SquareRoot extends Operator {
     /**
      * Executes the square root operation (√x).
      * If the current input is non-negative, calculates the result and updates the state.
-     * Otherwise, throws an {@code ArithmeticException} with the message "Cannot take the square root of a negative number."
+     * Otherwise, throws an ArithmeticException with the message "Cannot take the square root of a negative number."
      *
      * @throws ArithmeticException If attempting to take the square root of a negative number.
      */

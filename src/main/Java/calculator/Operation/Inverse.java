@@ -5,18 +5,19 @@ import Java.calculator.util.State;
 import Java.calculator.format.Formatter;
 
 /**
- * The {@code Inverse} class represents the operation 1/x.
- * It extends the {@code Operator} class and implements the {@code execute} method.
- * The result is formatted using the provided {@code Formatter}.
+ * The Inverse class represents the operation 1/x in a calculator.
+ * This class extends the Operator class and implements the execute method.
+ * The result is formatted using the provided Formatter.
  *
  * @author Vitoria Oliveira
  * @author Camille Koestli
  * @since 05.12.23
+ * @see Operator
  */
 public class Inverse extends Operator {
 
     /**
-     * Constructs an {@code Inverse} object with the given state.
+     * Constructs an Inverse object with the given state.
      *
      * @param s The state of the calculator.
      */

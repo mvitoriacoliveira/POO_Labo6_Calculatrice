@@ -11,7 +11,7 @@ import Java.calculator.util.Stack;
  * @author Vitoria Oliveira
  * @author Camille Koestli
  * @since 05.12.23
- * @see Java.calculator.Operation.BinaryOp
+ * @see BinaryOp
  */
 public class Addition<T> extends BinaryOp<T> {
 
