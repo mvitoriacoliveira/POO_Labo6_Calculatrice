@@ -111,7 +111,7 @@ public class Calculator {
                 operator.execute();
 
                 double result = Double.parseDouble(state.getCurrentInput());
-                stack.push(state.getCurrentInput());
+                stack.push(formatOneDecimal(state.getCurrentInput()));
 
                 state.setCurrentInput(String.valueOf(result));
             } else {

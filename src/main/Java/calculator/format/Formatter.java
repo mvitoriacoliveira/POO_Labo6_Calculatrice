@@ -33,7 +33,6 @@ public class Formatter {
      * @return A formatted string with one decimal place, or the original input if it is not numeric.
      */
     public static String formatOneDecimal(String input) {
-        try {
             if ( isNumeric(input) && !(input.contains(".")) && !(input.contains(","))) {
                 double value = Double.parseDouble(input);
                 DecimalFormat decimalFormat = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance(Locale.US));
@@ -42,10 +41,6 @@ public class Formatter {
                 input = input.replace(',', '.');
                 return input;
             }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return input;
-        }
     }
 
     /**
