@@ -36,7 +36,7 @@ public abstract class BinaryOp<T> extends Operator{
 
     protected void performBinaryOperation(double input1, double input2) {
         double result = calculateResult(input1, input2);
-        state.setCurrentInput(Formatter.format(result));
+        state.setCurrentInput(Formatter.formatOneDecimal(String.valueOf(result)));
     }
 
     protected abstract double calculateResult(double input1, double input2);

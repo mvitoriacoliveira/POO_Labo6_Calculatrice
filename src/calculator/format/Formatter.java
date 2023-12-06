@@ -33,7 +33,7 @@ public class Formatter {
         return decimalFormat.format(result);
     }
 
-    static String formatOneDecimal(String input) {
+    public static String formatOneDecimal(String input) {
         try {
             if ( isNumeric(input) && !(input.contains(".")) && !(input.contains(","))) {
                 double value = Double.parseDouble(input);

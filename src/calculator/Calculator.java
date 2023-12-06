@@ -116,7 +116,7 @@ public class Calculator {
                 state.setCurrentInput(String.valueOf(result));
             } else {
                 operator.execute();
-                state.setCurrentInput(input);
+                state.setCurrentInput(formatOneDecimal(input));
             }
         } else if (operator instanceof Clear || operator instanceof ClearError) {
             operator.execute();
