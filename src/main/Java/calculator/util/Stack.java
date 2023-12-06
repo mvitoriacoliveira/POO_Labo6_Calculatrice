@@ -119,15 +119,21 @@ public class Stack<T> {
      * Converts the stack to an array.
      * @return An array containing the elements of the stack.
      */
-    public Object[] toArray(){
-        ArrayList<T> tab = new ArrayList<>();
-        Iterator<T> it = new Iterator<>(this.top);
+    /**
+     * Converts the stack to an array.
+     *
+     * @return An array containing the elements of the stack.
+     */
+    public Object[] toArray() {
+        Object[] array = new Object[size];
+        Node<T> current = top;
 
-        while (it.hasNext()) {
-            tab.add(it.next());
+        for (int i = 0; i < size; i++) {
+            array[i] = current.data;
+            current = current.next;
         }
 
-        return tab.toArray();
+        return array;
     }
 
     /**
