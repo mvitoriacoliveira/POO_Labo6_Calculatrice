@@ -1,8 +1,8 @@
 package Java.calculator.Operation;
 
-import Java.calculator.format.Formatter;
 import Java.calculator.util.State;
 import Java.calculator.util.Stack;
+import static Java.calculator.format.Formatter.*;
 
 public abstract class BinaryOp<T> extends Operator{
 
@@ -36,7 +36,7 @@ public abstract class BinaryOp<T> extends Operator{
 
     protected void performBinaryOperation(double input1, double input2) {
         double result = calculateResult(input1, input2);
-        state.setCurrentInput(Formatter.formatOneDecimal(String.valueOf(result)));
+        state.setCurrentInput(format(result));
     }
 
     protected abstract double calculateResult(double input1, double input2);

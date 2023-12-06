@@ -34,7 +34,6 @@ public class Formatter {
     }
 
     public static String formatOneDecimal(String input) {
-        try {
             if ( isNumeric(input) && !(input.contains(".")) && !(input.contains(","))) {
                 double value = Double.parseDouble(input);
                 DecimalFormat decimalFormat = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance(Locale.US));
@@ -43,10 +42,6 @@ public class Formatter {
                 input = input.replace(',', '.');
                 return input;
             }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return input;
-        }
     }
 
     public static boolean isNumeric(String str) {
